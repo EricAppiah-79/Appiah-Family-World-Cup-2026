@@ -1,0 +1,2426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#1a0a00">
+<title>⚽ Appiah Family World Cup 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:   #0e0800;
+  --dark:    #1a0f00;
+  --red:     #cc0000;
+  --dkred:   #990000;
+  --gold:    #ffd700;
+  --ltgold:  #ffe566;
+  --amber:   #ff9500;
+  --green:   #006b2b;
+  --ltgreen: #e6f4ec;
+  --offwhite:#faf7f0;
+  --card:    #ffffff;
+  --muted:   #7a6a50;
+  --border:  #e8dfc8;
+  --shadow:  0 3px 16px rgba(14,8,0,.14);
+  --radius:  16px;
+  --FD:      'Playfair Display', serif;
+  --FB:      'Outfit', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--FB);background:var(--offwhite);color:var(--black);min-height:100vh;overflow-x:hidden}
+
+/* ── SPLASH ── */
+.splash{
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:32px 20px;text-align:center;position:relative;overflow:hidden;
+  background:var(--black);
+}
+.splash-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(204,0,0,.35) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(0,107,43,.3) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 30% at 0% 80%, rgba(255,215,0,.15) 0%, transparent 60%);
+}
+.splash-stripes{
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    135deg,
+    transparent,transparent 60px,
+    rgba(255,255,255,.015) 60px,rgba(255,255,255,.015) 61px
+  );
+}
+.splash > *{position:relative;z-index:1}
+.crest{font-size:64px;margin-bottom:4px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 4px 20px rgba(255,215,0,.4))}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+.family-name{
+  font-family:var(--FD);font-size:38px;font-weight:900;
+  background:linear-gradient(135deg,var(--gold),var(--amber),var(--ltgold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:1px;line-height:1.1;margin-bottom:2px;
+}
+.comp-name{
+  font-family:var(--FB);font-size:13px;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:6px;
+}
+.wc-badge{
+  display:inline-block;background:linear-gradient(135deg,var(--red),var(--dkred));
+  color:#fff;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  padding:5px 16px;border-radius:20px;margin-bottom:36px;
+  border:1px solid rgba(255,255,255,.15);
+}
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;max-width:360px}
+.role-btn{
+  padding:22px 14px;border-radius:18px;
+  border:1.5px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);backdrop-filter:blur(12px);
+  cursor:pointer;color:#fff;font-family:var(--FB);transition:all .25s;text-align:center;
+}
+.role-btn:hover{border-color:rgba(255,215,0,.4);background:rgba(255,215,0,.08)}
+.role-btn:active{transform:scale(.96)}
+.role-btn .icon{font-size:34px;display:block;margin-bottom:8px}
+.role-btn .label{font-size:15px;font-weight:800;display:block}
+.role-btn .sub{font-size:11px;color:rgba(255,255,255,.5);font-weight:600;margin-top:3px;display:block}
+.role-btn.admin{border-color:rgba(255,215,0,.3);background:rgba(255,215,0,.08)}
+
+/* ── LOGIN BOX ── */
+.login-wrap{display:flex;flex-direction:column;align-items:center;width:100%;max-width:380px}
+.login-box{
+  background:rgba(255,255,255,.07);backdrop-filter:blur(16px);
+  border:1.5px solid rgba(255,255,255,.15);border-radius:20px;
+  padding:28px 24px;width:100%;
+}
+.login-box label{display:block;color:rgba(255,255,255,.7);font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;margin-top:16px}
+.login-box label:first-child{margin-top:0}
+.login-box input{width:100%;padding:13px 16px;border-radius:10px;border:1.5px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.1);color:#fff;font-size:16px;font-family:var(--FB);font-weight:700;
+  outline:none;transition:border-color .2s;-webkit-text-fill-color:#fff}
+.login-box input::placeholder{color:rgba(255,255,255,.35);font-weight:500;-webkit-text-fill-color:rgba(255,255,255,.35)}
+.login-box input:focus{border-color:var(--gold)}
+.btn-go{
+  width:100%;padding:15px;margin-top:18px;border:none;border-radius:12px;
+  background:linear-gradient(135deg,var(--gold),var(--amber));
+  color:var(--black);font-size:16px;font-weight:900;font-family:var(--FB);
+  cursor:pointer;letter-spacing:.3px;transition:all .2s;
+  box-shadow:0 4px 20px rgba(255,150,0,.35);
+}
+.btn-go:active{transform:scale(.97)}
+.back-link{color:rgba(255,255,255,.45);font-size:13px;font-weight:700;cursor:pointer;
+  margin-top:16px;text-decoration:underline}
+.err{color:#ff7070;font-size:13px;font-weight:700;margin-top:8px;text-align:center;min-height:20px}
+
+/* ── APP HEADER ── */
+.app-header{
+  position:sticky;top:0;z-index:100;
+  background:var(--black);
+  box-shadow:0 2px 20px rgba(0,0,0,.5);
+}
+.header-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:11px 16px 9px;
+  border-bottom:2px solid var(--red);
+}
+.header-brand{display:flex;align-items:center;gap:9px}
+.header-brand .hball{font-size:22px}
+.header-brand .htitle{
+  font-family:var(--FD);font-size:16px;font-weight:900;
+  background:linear-gradient(135deg,var(--gold),var(--amber));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1.1;
+}
+.header-brand .hsub{font-size:10px;color:rgba(255,255,255,.4);font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;margin-top:1px}
+.hpts{
+  background:linear-gradient(135deg,var(--gold),var(--amber));
+  color:var(--black);font-weight:900;font-size:14px;
+  padding:6px 14px;border-radius:20px;text-align:center;min-width:64px;
+  box-shadow:0 2px 10px rgba(255,150,0,.3);
+}
+.hpts span{display:block;font-size:9px;font-weight:700;opacity:.7;text-transform:uppercase}
+.prog-outer{padding:0 16px 8px;background:var(--black)}
+.prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.prog-lbl{font-size:10px;color:rgba(255,255,255,.4);font-weight:700;letter-spacing:.8px;text-transform:uppercase}
+.prog-wrap{background:rgba(255,255,255,.1);border-radius:4px;height:3px}
+.prog-fill{height:3px;background:linear-gradient(90deg,var(--gold),var(--amber));border-radius:4px;transition:width .5s ease}
+
+/* ── TABS ── */
+.tabs-bar{
+  display:flex;overflow-x:auto;scrollbar-width:none;
+  background:#140b00;border-bottom:2px solid rgba(255,215,0,.15);
+}
+.tabs-bar::-webkit-scrollbar{display:none}
+.tab-btn{
+  flex:0 0 auto;padding:11px 16px;background:none;border:none;
+  color:rgba(255,255,255,.4);font-family:var(--FB);font-size:12px;font-weight:800;
+  cursor:pointer;white-space:nowrap;border-bottom:2.5px solid transparent;margin-bottom:-2px;
+  transition:all .2s;text-transform:uppercase;letter-spacing:.8px;
+}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── PANELS ── */
+.tab-panel{display:none;padding:16px}
+.tab-panel.active{display:block}
+
+/* ── HERO CARD ── */
+.hero-card{
+  border-radius:var(--radius);padding:22px 20px;margin-bottom:16px;
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--black) 0%,#2a0a00 50%,#1a0f00 100%);
+  border:1px solid rgba(255,215,0,.2);
+}
+.hero-card::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 0% 0%,rgba(204,0,0,.3),transparent 70%),
+             radial-gradient(ellipse 60% 50% at 100% 100%,rgba(0,107,43,.2),transparent 70%);
+}
+.hero-card::after{content:"⚽";position:absolute;right:10px;bottom:-10px;font-size:84px;opacity:.1}
+.hero-card > *{position:relative;z-index:1}
+.hnlbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--gold);margin-bottom:3px;opacity:.8}
+.hname{font-family:var(--FD);font-size:30px;color:#fff;letter-spacing:.5px;line-height:1.1}
+.hsub2{font-size:12px;color:rgba(255,255,255,.5);margin-top:6px;font-weight:600}
+.ghana-stripe{height:3px;background:linear-gradient(90deg,var(--red),var(--gold),var(--green));
+  border-radius:2px;margin-top:14px;opacity:.7}
+
+/* ── STATS ── */
+.stats-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
+.stat-box{background:var(--card);border-radius:12px;padding:14px 8px;text-align:center;
+  box-shadow:var(--shadow);border:1px solid var(--border)}
+.stat-box .sv{font-family:var(--FD);font-size:30px;color:var(--red);line-height:1;font-weight:900}
+.stat-box .sl{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:3px}
+
+/* ── INFO BOX ── */
+.info-box{
+  background:linear-gradient(135deg,rgba(255,215,0,.1),rgba(255,149,0,.08));
+  border:1.5px solid rgba(255,215,0,.3);border-radius:12px;
+  padding:11px 14px;font-size:13px;font-weight:600;color:#5c3d00;
+  margin-bottom:14px;display:flex;align-items:flex-start;gap:8px;line-height:1.5
+}
+
+/* ── MATCH CARDS ── */
+.date-lbl{
+  font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;
+  color:var(--muted);padding:8px 0 6px;display:flex;align-items:center;gap:8px
+}
+.date-lbl::after{content:"";flex:1;height:1px;background:var(--border)}
+
+.match-card{
+  background:var(--card);border-radius:var(--radius);margin-bottom:10px;
+  box-shadow:var(--shadow);overflow:hidden;border:1.5px solid var(--border);
+  transition:border-color .2s,box-shadow .2s;
+  animation:slideUp .25s ease both;
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.match-card.predicted{border-color:#22c55e;box-shadow:0 3px 14px rgba(34,197,94,.15)}
+.match-card.correct{border-color:#16a34a;background:linear-gradient(135deg,#f0fff4,#fff)}
+.match-card.wrong{border-color:#f87171;background:linear-gradient(135deg,#fff5f5,#fff)}
+
+.match-top{display:flex;align-items:center;padding:9px 14px 7px;gap:4px;flex-wrap:wrap}
+.mnum{font-size:11px;color:var(--muted);font-weight:700;min-width:22px}
+.mdate{font-size:11px;color:var(--muted);font-weight:700;flex:1}
+.mvenue{font-size:10px;color:var(--muted);font-weight:600}
+.chip{font-size:10px;font-weight:800;padding:2px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px}
+.cp{background:#f3f4f6;color:#6b7280}
+.cd{background:#dcfce7;color:#15803d}
+.cc{background:#bbf7d0;color:#14532d}
+.cw{background:#fee2e2;color:#b91c1c}
+
+.match-body{padding:0 14px 12px}
+.teams-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px;margin-bottom:10px}
+.tname{font-weight:800;font-size:15px;line-height:1.2;color:var(--black)}
+.tname.r{text-align:right}
+.vsbadge{font-family:var(--FD);font-size:13px;color:var(--muted);text-align:center;min-width:26px;font-weight:900}
+
+/* Prediction buttons */
+.pred-area{display:flex;flex-direction:column;gap:7px}
+.pred-lbl{font-size:11px;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:.8px}
+.pred-btns{display:grid;grid-template-columns:1fr auto 1fr;gap:6px}
+.pb{
+  padding:10px 6px;border:2px solid var(--border);border-radius:10px;
+  background:var(--offwhite);font-family:var(--FB);font-size:12px;font-weight:800;
+  color:var(--black);cursor:pointer;transition:all .15s;text-align:center;line-height:1.3;
+  word-break:break-word;
+}
+.pb.dr{color:var(--muted);font-size:11px}
+.pb:active{transform:scale(.96)}
+.pb.sel{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 2px 10px rgba(0,107,43,.3)}
+.pb.dr.sel{background:var(--muted);border-color:var(--muted)}
+
+.rrow{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;flex-wrap:wrap}
+.rc{color:#15803d}.rw2{color:var(--red)}
+.ptsbadge{
+  margin-left:auto;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:900;
+  background:linear-gradient(135deg,var(--gold),var(--amber));color:var(--black);
+  box-shadow:0 1px 6px rgba(255,150,0,.3)
+}
+
+/* ── FILTERS ── */
+.filter-row{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.filter-row::-webkit-scrollbar{display:none}
+.fc{flex:0 0 auto;padding:6px 13px;border:1.5px solid var(--border);border-radius:20px;
+  background:var(--card);font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;
+  white-space:nowrap;transition:all .15s}
+.fc.active{background:var(--green);border-color:var(--green);color:#fff}
+
+/* ── KNOCKOUT ── */
+.ko-stage-hdr{
+  background:linear-gradient(135deg,var(--black),#2a0a00);
+  color:var(--gold);font-family:var(--FD);font-size:17px;font-weight:900;
+  padding:10px 16px;border-radius:12px;margin:12px 0 8px;
+  display:flex;align-items:center;gap:8px;
+  border-left:4px solid var(--red);letter-spacing:.5px;
+}
+.ko-inp{width:100%;padding:9px 10px;border:2px solid var(--border);border-radius:9px;
+  font-family:var(--FB);font-size:13px;font-weight:700;background:var(--offwhite);
+  color:var(--black);outline:none;transition:border-color .2s}
+.ko-inp:focus{border-color:var(--green)}
+.ko-inp::placeholder{color:#bbb;font-weight:500}
+.ko-inp:disabled{background:#f3f4f6;color:#9ca3af}
+.ko-pair{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;margin-bottom:8px;align-items:center}
+
+/* ── TEACHER DASH ── */
+.dash-banner{
+  border-radius:var(--radius);padding:20px;margin-bottom:16px;
+  display:flex;align-items:center;gap:14px;
+  background:linear-gradient(135deg,var(--black),#2a0500);
+  border:1px solid rgba(255,215,0,.25);
+}
+.dash-banner .dicon{font-size:38px;flex-shrink:0}
+.dash-banner h2{font-family:var(--FD);font-size:22px;color:var(--gold);font-weight:900}
+.dash-banner p{font-size:13px;color:rgba(255,255,255,.55);font-weight:600;margin-top:2px}
+
+.lb-wrap{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  overflow:hidden;margin-bottom:16px;border:1px solid var(--border)}
+.lb-hdr{background:linear-gradient(135deg,var(--black),#2a0f00);color:var(--gold);
+  padding:11px 16px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;
+  display:grid;grid-template-columns:32px 1fr auto auto;gap:8px;border-bottom:2px solid var(--red)}
+.lb-row{display:grid;grid-template-columns:32px 1fr auto auto;gap:8px;align-items:center;
+  padding:12px 16px;border-bottom:1px solid var(--border);transition:background .2s;cursor:pointer}
+.lb-row:last-child{border-bottom:none}
+.lb-row:hover{background:var(--offwhite)}
+.lb-rank{font-family:var(--FD);font-size:19px;color:var(--muted);text-align:center;font-weight:900}
+.lb-rank.r1{color:#b8860b}.lb-rank.r2{color:#888}.lb-rank.r3{color:#8b4513}
+.lb-name{font-weight:800;font-size:14px;color:var(--black)}
+.lb-sub{font-size:11px;color:var(--muted);font-weight:600}
+.lb-cor{font-size:13px;color:var(--muted);font-weight:700;text-align:center}
+.lb-pts{font-family:var(--FD);font-size:22px;color:var(--red);font-weight:900}
+
+/* Result setter */
+.rs-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:16px;margin-bottom:12px;border:1px solid var(--border)}
+.rs-card h3{font-size:13px;font-weight:800;color:var(--green);text-transform:uppercase;
+  letter-spacing:.6px;margin-bottom:12px}
+.rs-match{padding:11px 0;border-bottom:1px solid var(--border)}
+.rs-match:last-child{border-bottom:none}
+.rs-teams{font-size:13px;font-weight:800;color:var(--black);margin-bottom:7px}
+.rs-teams span{color:var(--muted);font-weight:600;font-size:12px;margin:0 4px}
+.rs-btns{display:flex;gap:6px;flex-wrap:wrap}
+.rb{padding:7px 12px;border:2px solid var(--border);border-radius:8px;background:var(--offwhite);
+  font-family:var(--FB);font-size:12px;font-weight:800;cursor:pointer;transition:all .15s;color:var(--black)}
+.rb:active{transform:scale(.97)}
+.rb.rset{background:var(--green);border-color:var(--green);color:#fff}
+.rb.dset{background:var(--muted);border-color:var(--muted);color:#fff}
+.rb.clr{color:var(--red);border-color:var(--red)}
+
+/* Student detail */
+.sd-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  overflow:hidden;margin-bottom:14px;border:1px solid var(--border)}
+.sd-hdr{background:linear-gradient(135deg,var(--black),#2a0a00);color:#fff;
+  padding:13px 16px;display:flex;align-items:center;justify-content:space-between}
+.sd-hdr h3{font-family:var(--FD);font-size:18px;color:var(--gold);font-weight:900}
+.sd-pts{background:linear-gradient(135deg,var(--gold),var(--amber));color:var(--black);
+  padding:4px 13px;border-radius:20px;font-size:13px;font-weight:900}
+.sd-row{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;
+  padding:9px 14px;border-bottom:1px solid var(--border);font-size:13px}
+.sd-row:last-child{border-bottom:none}
+.sd-m{font-weight:700;color:var(--black)}
+.sd-p{font-weight:600;color:var(--muted)}
+.sd-pts2{font-weight:900;color:var(--green)}
+
+/* Tally */
+.tally-hero{
+  border-radius:var(--radius);padding:30px 20px;text-align:center;margin-bottom:16px;
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--black) 0%,#2a0500 50%,var(--black) 100%);
+  border:1px solid rgba(255,215,0,.2);
+}
+.tally-hero::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 100% 80% at 50% 0%,rgba(204,0,0,.25),transparent 70%);
+}
+.tally-hero::after{content:"🏆";position:absolute;right:10px;bottom:4px;font-size:60px;opacity:.12}
+.tally-hero>*{position:relative;z-index:1}
+.big-pts{
+  font-family:var(--FD);font-size:76px;font-weight:900;line-height:1;
+  background:linear-gradient(135deg,var(--gold),var(--amber),var(--ltgold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 2px 16px rgba(255,150,0,.4));
+}
+.pts-lbl{color:rgba(255,255,255,.6);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
+.tn-lbl{color:rgba(255,255,255,.4);font-size:11px;font-weight:700;margin-bottom:6px}
+.bb-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.bb{background:var(--card);border-radius:12px;padding:16px 10px;text-align:center;
+  box-shadow:var(--shadow);border:1px solid var(--border)}
+.bv{font-family:var(--FD);font-size:36px;color:var(--red);font-weight:900}
+.bl{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.ntcard{background:var(--card);border-radius:var(--radius);padding:16px;
+  box-shadow:var(--shadow);margin-bottom:14px;border:1px solid var(--border)}
+.ntcard h3{font-size:13px;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px}
+.ntcard textarea{width:100%;min-height:100px;border:2px solid var(--border);border-radius:9px;
+  padding:11px;font-family:var(--FB);font-size:14px;font-weight:500;resize:vertical;
+  outline:none;transition:border-color .2s;background:var(--offwhite)}
+.ntcard textarea:focus{border-color:var(--green)}
+.fav-inp{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:10px;
+  font-family:var(--FB);font-size:15px;font-weight:700;outline:none;
+  background:var(--offwhite);transition:border-color .2s}
+.fav-inp:focus{border-color:var(--green)}
+
+/* t-tabs */
+.t-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.ttab{padding:7px 14px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);
+  font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;transition:all .15s}
+.ttab.active{background:var(--red);border-color:var(--red);color:#fff}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:var(--black);color:var(--gold);padding:11px 22px;border-radius:20px;
+  font-size:14px;font-weight:800;box-shadow:0 4px 24px rgba(0,0,0,.5);z-index:9999;
+  border:1px solid rgba(255,215,0,.3);pointer-events:none;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ── LOADING ── */
+.loading{text-align:center;padding:40px;color:var(--muted);font-size:14px;font-weight:700}
+.loading::after{content:"";display:block;width:30px;height:30px;border:3px solid var(--border);
+  border-top-color:var(--red);border-radius:50%;animation:spin .7s linear infinite;margin:12px auto 0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty{text-align:center;padding:36px;color:var(--muted);font-size:14px;font-weight:700}
+
+/* screens controlled via JS style.display */
+/* ── EMAIL / NOTIFY FEATURES ── */
+.email-inp{width:100%;padding:12px 14px;border:2px solid rgba(255,255,255,.2);border-radius:10px;
+  background:rgba(255,255,255,.1);color:#fff;font-size:15px;font-family:var(--FB);font-weight:600;
+  outline:none;transition:border-color .2s;margin-top:4px;}
+.email-inp::placeholder{color:rgba(255,255,255,.35);font-weight:500;-webkit-text-fill-color:rgba(255,255,255,.35)}
+.email-inp:focus{border-color:var(--gold)}
+.email-inp.light{background:var(--offwhite);color:var(--black);border-color:var(--border);-webkit-text-fill-color:var(--black)}
+.email-inp.light::placeholder{color:#aaa;-webkit-text-fill-color:#aaa}
+.email-inp.light:focus{border-color:var(--green)}
+
+.notify-card{background:var(--card);border-radius:var(--radius);padding:16px;
+  box-shadow:var(--shadow);margin-bottom:14px;border:1px solid var(--border)}
+.notify-card h3{font-size:13px;font-weight:800;color:var(--green);text-transform:uppercase;
+  letter-spacing:.6px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+
+.action-btn{display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:13px 16px;border:none;border-radius:12px;
+  font-family:var(--FB);font-size:14px;font-weight:800;cursor:pointer;
+  transition:all .2s;margin-bottom:8px;letter-spacing:.2px}
+.action-btn:active{transform:scale(.97)}
+.btn-email{background:linear-gradient(135deg,#cc0000,#990000);color:#fff;
+  box-shadow:0 3px 14px rgba(204,0,0,.3)}
+.btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;
+  box-shadow:0 3px 14px rgba(37,211,102,.3)}
+.btn-mail{background:linear-gradient(135deg,#4285F4,#1a73e8);color:#fff;
+  box-shadow:0 3px 14px rgba(66,133,244,.3)}
+.btn-copy{background:var(--offwhite);color:var(--black);border:2px solid var(--border)}
+
+.setup-banner{background:linear-gradient(135deg,rgba(255,215,0,.15),rgba(255,149,0,.1));
+  border:1.5px solid rgba(255,215,0,.4);border-radius:12px;padding:14px 16px;
+  margin-bottom:14px;font-size:13px;color:#5c3d00;font-weight:600;line-height:1.5}
+.setup-banner strong{display:block;font-size:14px;color:#3a2500;margin-bottom:4px}
+.setup-step{display:flex;gap:8px;margin-top:8px;align-items:flex-start;font-size:13px}
+.setup-num{flex-shrink:0;width:20px;height:20px;background:var(--amber);color:#fff;border-radius:50%;
+  font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center}
+
+.emailjs-config{background:var(--offwhite);border:1.5px solid var(--border);border-radius:10px;
+  padding:12px;margin-top:10px;display:none}
+.emailjs-config.open{display:block}
+.cfg-row{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.cfg-row label{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.cfg-inp{padding:9px 12px;border:2px solid var(--border);border-radius:8px;
+  font-family:var(--FB);font-size:13px;font-weight:600;background:#fff;
+  outline:none;transition:border-color .2s}
+.cfg-inp:focus{border-color:var(--green)}
+.cfg-save{width:100%;padding:10px;background:var(--green);color:#fff;border:none;
+  border-radius:8px;font-family:var(--FB);font-size:13px;font-weight:800;cursor:pointer;margin-top:4px}
+
+.player-email-row{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-weight:600;padding:4px 0}
+.player-email-row .em{flex:1;color:#4285F4;word-break:break-all}
+.player-email-row .no-em{color:#ccc;font-style:italic}
+
+.send-log{background:var(--offwhite);border-radius:8px;padding:10px;margin-top:8px;
+  font-size:12px;color:var(--muted);font-weight:600;max-height:80px;overflow-y:auto}
+.log-ok{color:var(--green)}.log-err{color:var(--red)}.log-info{color:var(--muted)}
+
+/* ── SAVE PREDICTION BUTTON ── */
+.pb.pending{
+  background: rgba(0,107,43,.12);
+  border-color: var(--green);
+  color: var(--green);
+  animation: pulse-border .8s ease-in-out infinite;
+}
+@keyframes pulse-border{
+  0%,100%{ box-shadow: 0 0 0 0 rgba(0,107,43,.3); }
+  50%{ box-shadow: 0 0 0 4px rgba(0,107,43,.1); }
+}
+.save-pred-btn{
+  width:100%;margin-top:8px;padding:12px;border:none;border-radius:10px;
+  background:linear-gradient(135deg,var(--green),#004d1a);
+  color:#fff;font-family:var(--FB);font-size:14px;font-weight:800;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;
+  transition:all .2s;box-shadow:0 3px 12px rgba(0,107,43,.35);
+  animation:slideUp .2s ease both;
+}
+.save-pred-btn:active{ transform:scale(.97); }
+
+/* ── PER-MATCH LOCK ── */
+.lock-pred-btn{
+  width:100%;margin-top:6px;padding:11px;border-radius:10px;
+  background:transparent;border:2px solid #d97706;
+  color:#92400e;font-family:var(--FB);font-size:13px;font-weight:800;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;
+  transition:all .2s;
+}
+.lock-pred-btn:active{ transform:scale(.97); background:#d97706; color:#fff; }
+.match-card.lock-done{ border-color:#7c3aed !important; background:linear-gradient(135deg,#faf5ff,#fff) !important; }
+.locked-badge{ font-size:10px;font-weight:800;padding:2px 9px;border-radius:20px;
+  background:#ede9fe;color:#6b21a8;text-transform:uppercase;letter-spacing:.4px; }
+.locked-disp{ display:flex;align-items:center;gap:8px;padding:9px 12px;
+  background:#f5f3ff;border-radius:9px;border:1px solid #ddd6fe; }
+.locked-disp .ld-team{ font-weight:800;font-size:15px;color:#4c1d95; }
+
+.save-pred-btn.saved{
+  background:linear-gradient(135deg,#166534,#14532d);
+  box-shadow:none;
+}
+/* ── LOCK & ROUND SYSTEM ── */
+.lock-bar{border-radius:var(--radius);padding:14px 16px;margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.lock-bar.unlocked{background:linear-gradient(135deg,#fff8e1,#fffde7);border:2px solid var(--amber)}
+.lock-bar.locked{background:linear-gradient(135deg,#e8f5e9,#f0fff4);border:2px solid var(--green)}
+.lock-bar .licon{font-size:26px;flex-shrink:0}
+.lock-bar .ltitle{font-weight:800;font-size:14px;color:var(--black)}
+.lock-bar .lsub{font-size:12px;color:var(--muted);font-weight:600;margin-top:2px}
+.btn-lock{width:100%;padding:15px;border:none;border-radius:12px;font-family:var(--FB);
+  font-size:15px;font-weight:900;cursor:pointer;transition:all .2s;margin-top:4px;letter-spacing:.3px}
+.btn-lock.do-lock{background:linear-gradient(135deg,#cc0000,#990000);color:#fff;box-shadow:0 4px 16px rgba(204,0,0,.3)}
+.btn-lock.locked-state{background:linear-gradient(135deg,var(--green),#004d1a);color:#fff;cursor:default}
+.confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:600;display:none;align-items:flex-end;justify-content:center}
+.confirm-overlay.open{display:flex}
+.confirm-sheet{background:#fff;border-radius:24px 24px 0 0;padding:28px 22px 36px;width:100%;max-width:480px;box-shadow:0 -8px 40px rgba(0,0,0,.25)}
+.confirm-sheet h3{font-family:var(--FD);font-size:22px;color:var(--black);margin-bottom:8px}
+.confirm-sheet p{font-size:14px;color:var(--muted);font-weight:600;line-height:1.5;margin-bottom:20px}
+.confirm-btns{display:flex;flex-direction:column;gap:8px}
+.round-banner{border-radius:var(--radius);padding:14px 16px;margin-bottom:12px;
+  background:linear-gradient(135deg,var(--black),#2a0500);border:1.5px solid rgba(255,215,0,.3);
+  display:flex;align-items:center;gap:12px}
+.round-banner .ricon{font-size:28px;flex-shrink:0}
+.round-banner .rtitle{font-family:var(--FD);font-size:15px;color:var(--gold);font-weight:900}
+.round-banner .rsub{font-size:12px;color:rgba(255,255,255,.55);font-weight:600;margin-top:2px}
+.rbadge-open{background:#dcfce7;color:#14532d}
+.rbadge-locked{background:#fef3c7;color:#92400e}
+.rbadge-closed{background:#f3f4f6;color:#6b7280}
+.round-ctrl{background:var(--card);border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.round-ctrl h4{font-size:13px;font-weight:800;color:var(--black);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.round-ctrl-btns{display:flex;gap:6px;flex-wrap:wrap}
+.rc-btn{padding:8px 14px;border-radius:8px;border:2px solid var(--border);background:var(--offwhite);font-family:var(--FB);font-size:12px;font-weight:800;cursor:pointer;transition:all .15s;color:var(--black)}
+.rc-btn:active{transform:scale(.97)}
+.open-round{background:var(--green);border-color:var(--green);color:#fff}
+.close-round{background:var(--red);border-color:var(--red);color:#fff}
+.lock-chip{font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;text-transform:uppercase}
+.lc-locked{background:#dcfce7;color:#14532d}
+.lc-open{background:#fef3c7;color:#92400e}
+
+
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:500;
+  display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:20px;padding:24px 20px;width:100%;max-width:380px;
+  box-shadow:0 8px 40px rgba(0,0,0,.3)}
+.modal-box h3{font-family:var(--FD);font-size:20px;color:var(--black);margin-bottom:12px}
+.modal-box p{font-size:14px;color:var(--muted);font-weight:600;margin-bottom:16px;line-height:1.5}
+.modal-btns{display:flex;gap:8px;flex-direction:column}
+
+</style>
+</head>
+<body>
+
+<!-- ── SPLASH ── -->
+<div class="splash" id="splash" style="display:none">
+  <div class="splash-bg"></div>
+  <div class="splash-stripes"></div>
+  <div class="crest">🏆</div>
+  <div class="family-name">Appiah Family</div>
+  <div class="comp-name">World Cup Prediction Competition</div>
+  <div class="wc-badge">⚽ FIFA World Cup 2026 · USA · Canada · Mexico</div>
+  <div class="role-grid">
+    <button class="role-btn admin" onclick="goTeacherLogin()">
+      <span class="icon">👑</span>
+      <span class="label">Admin</span>
+      <span class="sub">Set results & leaderboard</span>
+    </button>
+    <button class="role-btn" onclick="goStudentLogin()">
+      <span class="icon">🎽</span>
+      <span class="label">Player</span>
+      <span class="sub">Enter my predictions</span>
+    </button>
+  </div>
+</div>
+
+<!-- ── ADMIN LOGIN ── -->
+<div class="splash" id="adminLogin" style="display:none">
+  <div class="crest" style="font-size:48px">👑</div>
+  <div class="family-name" style="font-size:28px">Admin Login</div>
+  <div class="comp-name" style="margin-bottom:24px">Appiah Family Competition</div>
+  <div class="login-wrap">
+    <div class="login-box">
+      <label>Admin password</label>
+      <input type="password" id="aPass" placeholder="Enter password..." onkeydown="if(event.key==='Enter')doAdminLogin()">
+      <div class="err" id="aErr"></div>
+      <button class="btn-go" onclick="doAdminLogin()">Enter Admin Dashboard ➜</button>
+    </div>
+    <span class="back-link" onclick="goSplash()">← Back</span>
+  </div>
+</div>
+
+<!-- ── PLAYER LOGIN ── -->
+<div class="splash" id="playerLogin" style="display:none">
+  <div class="crest" style="font-size:48px">🎽</div>
+  <div class="family-name" style="font-size:28px">My Predictions</div>
+  <div class="comp-name" style="margin-bottom:24px">Appiah Family World Cup 2026</div>
+  <div class="login-wrap">
+    <div class="login-box">
+      <label>Your name</label>
+      <input type="text" id="pName" placeholder="e.g. Kwame Appiah" maxlength="30" autocomplete="off" onkeydown="if(event.key==='Enter')document.getElementById('pEmail').focus()">
+      <label>Your email <span style="color:rgba(255,255,255,.4);font-weight:500">(optional — for updates)</span></label>
+      <input type="email" id="pEmail" class="email-inp" placeholder="your@email.com" autocomplete="email" onkeydown="if(event.key==='Enter')document.getElementById('pMobile').focus()">
+      <label>WhatsApp number <span style="color:rgba(255,255,255,.4);font-weight:500">(optional — include country code)</span></label>
+      <input type="tel" id="pMobile" class="email-inp" placeholder="e.g. 447712345678" autocomplete="tel" onkeydown="if(event.key==='Enter')doPlayerLogin()">
+      <div class="err" id="pErr"></div>
+      <button class="btn-go" onclick="doPlayerLogin()">Start Predicting ➜</button>
+    </div>
+    <span class="back-link" onclick="goSplash()">← Back</span>
+  </div>
+</div>
+
+<!-- ── ADMIN APP ── -->
+<div id="adminApp" style="display:none">
+  <header class="app-header">
+    <div class="header-top">
+      <div class="header-brand">
+        <span class="hball">👑</span>
+        <div>
+          <div class="htitle">Appiah Family WC 2026</div>
+          <div class="hsub">Admin Dashboard</div>
+        </div>
+      </div>
+      <button onclick="goSplash()" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+        color:rgba(255,255,255,.7);padding:6px 12px;border-radius:8px;
+        font-family:var(--FB);font-size:12px;font-weight:700;cursor:pointer">Sign out</button>
+    </div>
+  </header>
+  <nav class="tabs-bar">
+    <button class="tab-btn active" onclick="showATab('lb',this)">🏆 Leaderboard</button>
+    <button class="tab-btn" onclick="showATab('res',this)">⚽ Results</button>
+    <button class="tab-btn" onclick="showATab('players',this)">👥 Players</button>
+    <button class="tab-btn" onclick="showATab('rounds',this)">🔓 Rounds</button>
+    <button class="tab-btn" onclick="showATab('notify',this)">📧 Notify</button>
+  </nav>
+  <div class="tab-panel active" id="at-lb">
+    <div class="dash-banner">
+      <div class="dicon">🏆</div>
+      <div><h2>Family Leaderboard</h2><p id="lbSub">Live rankings</p></div>
+    </div>
+    <div id="lbContent"><div class="loading"></div></div>
+  </div>
+  <div class="tab-panel" id="at-res">
+    <div class="info-box">⚽ Set match results here — all player predictions are marked automatically and points awarded instantly.</div>
+    <div class="t-tabs">
+      <button class="ttab active" onclick="showResTab('group',this)">Group Stage</button>
+      <button class="ttab" onclick="showResTab('knockout',this)">Knockout</button>
+    </div>
+    <div id="resContent"><div class="loading"></div></div>
+  </div>
+  <div class="tab-panel" id="at-players">
+    <div class="info-box">👥 Tap a player to see all their predictions and score breakdown.</div>
+    <div id="playersContent"><div class="loading"></div></div>
+  </div>
+
+
+  <!-- ROUNDS MANAGEMENT PANEL -->
+  <div class="tab-panel" id="at-rounds">
+    <div class="dash-banner">
+      <div class="dicon">🔓</div>
+      <div><h2>Round Control</h2><p>Open rounds for predictions · lock when ready · notify players</p></div>
+    </div>
+
+    <div class="info-box">
+      ⚙️ Open each round when you're ready for players to predict. Once everyone has locked in, close the round before the matches start. Players get an email + notification when a round opens.
+    </div>
+
+    <div id="roundsControlContent"><div class="loading"></div></div>
+  </div>
+  <!-- NOTIFY PANEL -->
+  <div class="tab-panel" id="at-notify">
+
+    <!-- EmailJS Setup Card -->
+    <div class="notify-card">
+      <h3>⚙️ EmailJS Setup <span id="ejsBadge" style="font-size:11px;padding:2px 8px;border-radius:10px;background:#fee2e2;color:#b91c1c;font-family:var(--FB);font-weight:700">Not configured</span></h3>
+      <p style="font-size:13px;color:var(--muted);font-weight:600;margin-bottom:10px;line-height:1.5">
+        Connect EmailJS to send automatic emails to all family members. Free for up to 200 emails/month.
+      </p>
+      <div class="setup-banner">
+        <strong>📋 Quick setup (2 minutes):</strong>
+        <div class="setup-step"><div class="setup-num">1</div><div>Go to <strong>emailjs.com</strong> → create a free account</div></div>
+        <div class="setup-step"><div class="setup-num">2</div><div>Add an <strong>Email Service</strong> (Gmail works great) → copy your <strong>Service ID</strong></div></div>
+        <div class="setup-step"><div class="setup-num">3</div><div>Create an <strong>Email Template</strong> using the variables below → copy your <strong>Template ID</strong></div></div>
+        <div class="setup-step"><div class="setup-num">4</div><div>Go to <strong>Account → API Keys</strong> → copy your <strong>Public Key</strong></div></div>
+        <div class="setup-step"><div class="setup-num">5</div><div>Paste all three below and tap Save</div></div>
+      </div>
+
+      <button onclick="toggleEJSConfig()" style="width:100%;padding:10px;background:var(--offwhite);border:2px solid var(--border);border-radius:10px;font-family:var(--FB);font-size:13px;font-weight:800;cursor:pointer;color:var(--black);margin-bottom:0" id="ejsToggleBtn">
+        ⚙️ Enter EmailJS credentials
+      </button>
+      <div class="emailjs-config" id="ejsConfig">
+        <div class="cfg-row"><label>Service ID</label><input class="cfg-inp" id="ejsService" placeholder="service_xxxxxxx"></div>
+        <div class="cfg-row"><label>Template ID</label><input class="cfg-inp" id="ejsTemplate" placeholder="template_xxxxxxx"></div>
+        <div class="cfg-row"><label>Public Key</label><input class="cfg-inp" id="ejsPublicKey" placeholder="your_public_key"></div>
+        <button class="cfg-save" onclick="saveEJSConfig()">💾 Save & Activate EmailJS</button>
+        <div style="margin-top:12px;padding:10px;background:#fffbeb;border-radius:8px;font-size:12px;color:#5c3d00;font-weight:600;line-height:1.6">
+          <strong>Template variables to use in EmailJS:</strong><br>
+          <code>{{to_email}}</code> — recipient email<br>
+          <code>{{to_name}}</code> — recipient name<br>
+          <code>{{subject}}</code> — email subject<br>
+          <code>{{message}}</code> — leaderboard / update body
+        </div>
+      </div>
+    </div>
+
+    <!-- Send Leaderboard Update -->
+    <div class="notify-card">
+      <h3>🏆 Send Leaderboard Update</h3>
+      <p style="font-size:13px;color:var(--muted);font-weight:600;margin-bottom:12px;line-height:1.5">
+        Send the current standings to all family members by email and/or WhatsApp.
+      </p>
+
+      <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px">📧 Email</div>
+      <button class="action-btn btn-email" onclick="sendLeaderboardEmails()" style="margin-bottom:6px">
+        📧 Auto-send to all emails (EmailJS)
+      </button>
+      <button class="action-btn btn-mail" onclick="sendLeaderboardMailto()" style="margin-bottom:12px">
+        ✉️ Open in my email app
+      </button>
+
+      <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px">💬 WhatsApp</div>
+      <button class="action-btn btn-wa" onclick="waIndividualLeaderboard()" style="margin-bottom:6px">
+        💬 Individual personalised messages
+      </button>
+      <button class="action-btn btn-wa" onclick="waGroupLeaderboard()" style="background:linear-gradient(135deg,#128C7E,#075E54);margin-bottom:12px">
+        👨‍👩‍👧‍👦 One message for the group chat
+      </button>
+
+      <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px">📋 Other</div>
+      <button class="action-btn btn-copy" onclick="copyLeaderboard()">
+        📋 Copy to clipboard
+      </button>
+      <div class="send-log" id="lbSendLog" style="display:none"></div>
+    </div>
+
+    <!-- Send Match Result Alert -->
+    <div class="notify-card">
+      <h3>⚽ Send Match Result Alert</h3>
+      <p style="font-size:13px;color:var(--muted);font-weight:600;margin-bottom:12px;line-height:1.5">
+        Notify everyone when a result is in — personalised messages showing if they got it right.
+      </p>
+
+      <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px">📧 Email</div>
+      <button class="action-btn btn-email" onclick="sendResultEmails()" style="margin-bottom:12px">
+        📧 Send personalised emails (auto)
+      </button>
+
+      <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px">💬 WhatsApp</div>
+      <button class="action-btn btn-wa" onclick="waIndividualResults()" style="margin-bottom:6px">
+        💬 Individual personalised WA messages
+      </button>
+      <button class="action-btn btn-wa" onclick="waGroupResult()" style="background:linear-gradient(135deg,#128C7E,#075E54);margin-bottom:12px">
+        👨‍👩‍👧‍👦 One result message for group chat
+      </button>
+      <div class="send-log" id="resSendLog" style="display:none"></div>
+    </div>
+
+    <!-- Player Contact List -->
+    <div class="notify-card">
+      <h3>📋 Contact List</h3>
+      <div id="emailListContent"><div class="loading"></div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── PLAYER APP ── -->
+<div id="playerApp" style="display:none">
+  <header class="app-header">
+    <div class="header-top">
+      <div class="header-brand">
+        <span class="hball">⚽</span>
+        <div>
+          <div class="htitle">Appiah Family WC 2026</div>
+          <div class="hsub" id="pHeaderName">My Predictions</div>
+        </div>
+      </div>
+      <div class="hpts" id="pHeaderPts">0<span>Points</span></div>
+    </div>
+    <div class="prog-outer">
+      <div class="prog-row">
+        <span class="prog-lbl">Predictions made</span>
+        <span class="prog-lbl" id="pProgTxt">0 / 104</span>
+      </div>
+      <div class="prog-wrap"><div class="prog-fill" id="pProgBar" style="width:0%"></div></div>
+    </div>
+  </header>
+  <nav class="tabs-bar">
+    <button class="tab-btn active" onclick="showPTab('phome',this)">🏠 Home</button>
+    <button class="tab-btn" onclick="showPTab('pgroup',this)">📋 Group Stage</button>
+    <button class="tab-btn" onclick="showPTab('pko',this)">⚡ Knockout</button>
+    <button class="tab-btn" onclick="showPTab('ptally',this)">🏆 My Score</button>
+  </nav>
+
+  <!-- HOME -->
+  <div class="tab-panel active" id="panel-phome">
+    <div class="hero-card">
+      <div class="hnlbl">Competing for</div>
+      <div class="hname" id="pHeroName">—</div>
+      <div class="hsub2">Appiah Family World Cup 2026 Prediction Competition</div>
+      <div class="ghana-stripe"></div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-box"><div class="sv" id="pSPred">0</div><div class="sl">Predicted</div></div>
+      <div class="stat-box"><div class="sv" id="pSCorrect">0</div><div class="sl">Correct</div></div>
+      <div class="stat-box"><div class="sv" id="pSPts">0</div><div class="sl">Points</div></div>
+    </div>
+    <div class="info-box">⚡ Your predictions save automatically every time you tap. Come back after every match to see your score — and check if you're top of the family leaderboard!</div>
+    <div style="background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);border:1px solid var(--border)">
+      <h3 style="font-family:var(--FD);font-size:17px;color:var(--red);margin-bottom:12px">How to play</h3>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="flex-shrink:0;width:26px;height:26px;background:var(--red);color:#fff;border-radius:50%;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center">1</div>
+          <div style="font-size:14px;color:var(--black);font-weight:600;line-height:1.4;padding-top:3px">Tap <strong>Group Stage</strong> and pick your winner before each match kicks off</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="flex-shrink:0;width:26px;height:26px;background:var(--red);color:#fff;border-radius:50%;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center">2</div>
+          <div style="font-size:14px;color:var(--black);font-weight:600;line-height:1.4;padding-top:3px">Pick the winning team — or tap <strong>Draw</strong> if you think it'll be level</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="flex-shrink:0;width:26px;height:26px;background:var(--red);color:#fff;border-radius:50%;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center">3</div>
+          <div style="font-size:14px;color:var(--black);font-weight:600;line-height:1.4;padding-top:3px">The admin enters results — correct predictions earn <strong>+3 points</strong></div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="flex-shrink:0;width:26px;height:26px;background:var(--gold);color:var(--black);border-radius:50%;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center">🏆</div>
+          <div style="font-size:14px;color:var(--black);font-weight:600;line-height:1.4;padding-top:3px">Most points after the Final wins the Appiah Family title!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP -->
+  <div class="tab-panel" id="panel-pgroup">
+    <div id="pLockBar"></div>
+    <div class="filter-row" id="pGroupFilters">
+      <button class="fc active" onclick="pFilterGrp('ALL',this)">All</button>
+      <button class="fc" onclick="pFilterGrp('A',this)">Grp A</button>
+      <button class="fc" onclick="pFilterGrp('B',this)">Grp B</button>
+      <button class="fc" onclick="pFilterGrp('C',this)">Grp C</button>
+      <button class="fc" onclick="pFilterGrp('D',this)">Grp D</button>
+      <button class="fc" onclick="pFilterGrp('E',this)">Grp E</button>
+      <button class="fc" onclick="pFilterGrp('F',this)">Grp F</button>
+      <button class="fc" onclick="pFilterGrp('G',this)">Grp G</button>
+      <button class="fc" onclick="pFilterGrp('H',this)">Grp H</button>
+      <button class="fc" onclick="pFilterGrp('I',this)">Grp I</button>
+      <button class="fc" onclick="pFilterGrp('J',this)">Grp J</button>
+      <button class="fc" onclick="pFilterGrp('K',this)">Grp K</button>
+      <button class="fc" onclick="pFilterGrp('L',this)">Grp L</button>
+      <button class="fc" onclick="pFilterGrp('todo',this)">⏳ To predict</button>
+    </div>
+    <div id="pGroupList"></div>
+  </div>
+
+  <!-- KO -->
+  <div class="tab-panel" id="panel-pko">
+    <div id="pKORoundBanner"></div>
+    <div id="pKOList"></div>
+  </div>
+
+  <!-- TALLY -->
+  <div class="tab-panel" id="panel-ptally">
+    <div class="tally-hero">
+      <div class="tn-lbl" id="pTallyName">—</div>
+      <div class="big-pts" id="pTallyPts">0</div>
+      <div class="pts-lbl">Family Competition Points</div>
+    </div>
+    <div class="bb-grid">
+      <div class="bb"><div class="bv" id="bbPred">0</div><div class="bl">Predicted</div></div>
+      <div class="bb"><div class="bv" id="bbCorrect">0</div><div class="bl">Correct</div></div>
+      <div class="bb"><div class="bv" id="bbGPts">0</div><div class="bl">Group pts</div></div>
+      <div class="bb"><div class="bv" id="bbKPts">0</div><div class="bl">Knockout pts</div></div>
+    </div>
+    <div class="ntcard">
+      <h3>⭐ My team to win it all</h3>
+      <input class="fav-inp" type="text" id="pFav" placeholder="Which team are you supporting?" oninput="pSaveFav()">
+    </div>
+    <div class="ntcard">
+      <h3>📝 My notes & predictions</h3>
+      <textarea id="pNotes" placeholder="Who do you think will lift the trophy? Write your bold predictions here..."></textarea>
+    </div>
+    <button onclick="goSplash()" style="width:100%;padding:13px;background:var(--offwhite);
+      border:2px solid var(--border);border-radius:12px;font-family:var(--FB);
+      font-size:14px;font-weight:800;color:var(--muted);cursor:pointer;margin-top:4px">
+      Switch player / sign out
+    </button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<!-- Lock confirmation sheet -->
+<div class="confirm-overlay" id="lockConfirmOverlay">
+  <div class="confirm-sheet">
+    <h3>🔒 Lock all your predictions?</h3>
+    <p>Once you lock in, you <strong>cannot change</strong> your group stage predictions. Make sure you're happy with all your picks first!</p>
+    <div class="confirm-btns">
+      <button class="btn-lock do-lock" onclick="confirmLock()">🔒 Yes — Lock my predictions</button>
+      <button style="width:100%;padding:13px;background:var(--offwhite);border:2px solid var(--border);
+        border-radius:12px;font-family:var(--FB);font-size:14px;font-weight:800;color:var(--muted);cursor:pointer"
+        onclick="document.getElementById('lockConfirmOverlay').classList.remove('open')">
+        Cancel — keep editing
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- New round notification sheet -->
+<div class="confirm-overlay" id="roundOpenSheet">
+  <div class="confirm-sheet">
+    <h3 id="roundOpenTitle">⚡ New round open!</h3>
+    <p id="roundOpenMsg">A new knockout round is now open. Tap below to start predicting!</p>
+    <div class="confirm-btns">
+      <button class="btn-lock do-lock" style="background:linear-gradient(135deg,var(--green),#004d1a)"
+        onclick="document.getElementById('roundOpenSheet').classList.remove('open');showPTab('pko',document.querySelectorAll('#playerApp .tab-btn')[2])">
+        ⚡ Make my predictions now
+      </button>
+      <button style="width:100%;padding:13px;background:var(--offwhite);border:2px solid var(--border);
+        border-radius:12px;font-family:var(--FB);font-size:14px;font-weight:800;color:var(--muted);cursor:pointer"
+        onclick="document.getElementById('roundOpenSheet').classList.remove('open')">
+        I'll do it later
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+// ── MATCH DATA ────────────────────────────────────────────────────────────────
+const GM=[
+  {id:1,date:"11 Jun",t1:"Mexico",t2:"South Africa",g:"A",v:"Mexico City"},
+  {id:2,date:"11 Jun",t1:"South Korea",t2:"Czechia",g:"A",v:"Guadalajara"},
+  {id:3,date:"12 Jun",t1:"Canada",t2:"Bosnia & Herz.",g:"B",v:"Toronto"},
+  {id:4,date:"12 Jun",t1:"USA",t2:"Paraguay",g:"D",v:"Los Angeles"},
+  {id:5,date:"13 Jun",t1:"Qatar",t2:"Switzerland",g:"B",v:"San Francisco"},
+  {id:6,date:"13 Jun",t1:"Brazil",t2:"Morocco",g:"C",v:"New York/NJ"},
+  {id:7,date:"13 Jun",t1:"Haiti",t2:"Scotland",g:"C",v:"Boston"},
+  {id:8,date:"13 Jun",t1:"Australia",t2:"Türkiye",g:"D",v:"Vancouver"},
+  {id:9,date:"14 Jun",t1:"Germany",t2:"Curaçao",g:"E",v:"Houston"},
+  {id:10,date:"14 Jun",t1:"Netherlands",t2:"Japan",g:"F",v:"Dallas"},
+  {id:11,date:"14 Jun",t1:"Ivory Coast",t2:"Ecuador",g:"E",v:"Philadelphia"},
+  {id:12,date:"14 Jun",t1:"Sweden",t2:"Tunisia",g:"F",v:"Monterrey"},
+  {id:13,date:"15 Jun",t1:"Spain",t2:"Cape Verde",g:"H",v:"Atlanta"},
+  {id:14,date:"15 Jun",t1:"Belgium",t2:"Egypt",g:"G",v:"Seattle"},
+  {id:15,date:"15 Jun",t1:"Saudi Arabia",t2:"Uruguay",g:"H",v:"Miami"},
+  {id:16,date:"15 Jun",t1:"Iran",t2:"New Zealand",g:"G",v:"Los Angeles"},
+  {id:17,date:"16 Jun",t1:"France",t2:"Senegal",g:"I",v:"New York/NJ"},
+  {id:18,date:"16 Jun",t1:"Iraq",t2:"Norway",g:"I",v:"Boston"},
+  {id:19,date:"16 Jun",t1:"Argentina",t2:"Algeria",g:"J",v:"Kansas City"},
+  {id:20,date:"16 Jun",t1:"Austria",t2:"Jordan",g:"J",v:"San Francisco"},
+  {id:21,date:"17 Jun",t1:"Portugal",t2:"DR Congo",g:"K",v:"Houston"},
+  {id:22,date:"17 Jun",t1:"England",t2:"Croatia",g:"L",v:"Dallas"},
+  {id:23,date:"17 Jun",t1:"Ghana",t2:"Panama",g:"L",v:"Toronto"},
+  {id:24,date:"17 Jun",t1:"Uzbekistan",t2:"Colombia",g:"K",v:"Mexico City"},
+  {id:25,date:"18 Jun",t1:"Czechia",t2:"South Africa",g:"A",v:"Atlanta"},
+  {id:26,date:"18 Jun",t1:"Mexico",t2:"South Korea",g:"A",v:"Guadalajara"},
+  {id:27,date:"18 Jun",t1:"Switzerland",t2:"Bosnia & Herz.",g:"B",v:"Los Angeles"},
+  {id:28,date:"18 Jun",t1:"Canada",t2:"Qatar",g:"B",v:"Vancouver"},
+  {id:29,date:"19 Jun",t1:"USA",t2:"Australia",g:"D",v:"Seattle"},
+  {id:30,date:"19 Jun",t1:"Scotland",t2:"Morocco",g:"C",v:"Boston"},
+  {id:31,date:"19 Jun",t1:"Brazil",t2:"Haiti",g:"C",v:"Philadelphia"},
+  {id:32,date:"19 Jun",t1:"Türkiye",t2:"Paraguay",g:"D",v:"San Francisco"},
+  {id:33,date:"20 Jun",t1:"Netherlands",t2:"Sweden",g:"F",v:"Houston"},
+  {id:34,date:"20 Jun",t1:"Germany",t2:"Ivory Coast",g:"E",v:"Toronto"},
+  {id:35,date:"20 Jun",t1:"Ecuador",t2:"Curaçao",g:"E",v:"Kansas City"},
+  {id:36,date:"20 Jun",t1:"Tunisia",t2:"Japan",g:"F",v:"Monterrey"},
+  {id:37,date:"21 Jun",t1:"Spain",t2:"Saudi Arabia",g:"H",v:"Atlanta"},
+  {id:38,date:"21 Jun",t1:"Belgium",t2:"Iran",g:"G",v:"Los Angeles"},
+  {id:39,date:"21 Jun",t1:"Uruguay",t2:"Cape Verde",g:"H",v:"Miami"},
+  {id:40,date:"21 Jun",t1:"New Zealand",t2:"Egypt",g:"G",v:"Vancouver"},
+  {id:41,date:"22 Jun",t1:"France",t2:"Iraq",g:"I",v:"Philadelphia"},
+  {id:42,date:"22 Jun",t1:"Norway",t2:"Senegal",g:"I",v:"New York/NJ"},
+  {id:43,date:"22 Jun",t1:"Argentina",t2:"Austria",g:"J",v:"Dallas"},
+  {id:44,date:"22 Jun",t1:"Jordan",t2:"Algeria",g:"J",v:"San Francisco"},
+  {id:45,date:"23 Jun",t1:"Portugal",t2:"Uzbekistan",g:"K",v:"Houston"},
+  {id:46,date:"23 Jun",t1:"England",t2:"Ghana",g:"L",v:"Boston"},
+  {id:47,date:"23 Jun",t1:"Panama",t2:"Croatia",g:"L",v:"Toronto"},
+  {id:48,date:"23 Jun",t1:"Colombia",t2:"DR Congo",g:"K",v:"Guadalajara"},
+  {id:49,date:"24 Jun",t1:"Czechia",t2:"Mexico",g:"A",v:"Mexico City"},
+  {id:50,date:"24 Jun",t1:"South Africa",t2:"South Korea",g:"A",v:"Monterrey"},
+  {id:51,date:"24 Jun",t1:"Switzerland",t2:"Canada",g:"B",v:"Vancouver"},
+  {id:52,date:"24 Jun",t1:"Bosnia & Herz.",t2:"Qatar",g:"B",v:"Seattle"},
+  {id:53,date:"24 Jun",t1:"Scotland",t2:"Brazil",g:"C",v:"Miami"},
+  {id:54,date:"24 Jun",t1:"Morocco",t2:"Haiti",g:"C",v:"Atlanta"},
+  {id:55,date:"25 Jun",t1:"Türkiye",t2:"USA",g:"D",v:"Los Angeles"},
+  {id:56,date:"25 Jun",t1:"Paraguay",t2:"Australia",g:"D",v:"San Francisco"},
+  {id:57,date:"25 Jun",t1:"Ecuador",t2:"Germany",g:"E",v:"New York/NJ"},
+  {id:58,date:"25 Jun",t1:"Curaçao",t2:"Ivory Coast",g:"E",v:"Philadelphia"},
+  {id:59,date:"25 Jun",t1:"Japan",t2:"Sweden",g:"F",v:"Dallas"},
+  {id:60,date:"25 Jun",t1:"Tunisia",t2:"Netherlands",g:"F",v:"Kansas City"},
+  {id:61,date:"26 Jun",t1:"Egypt",t2:"Iran",g:"G",v:"Seattle"},
+  {id:62,date:"26 Jun",t1:"New Zealand",t2:"Belgium",g:"G",v:"Vancouver"},
+  {id:63,date:"26 Jun",t1:"Cape Verde",t2:"Saudi Arabia",g:"H",v:"Houston"},
+  {id:64,date:"26 Jun",t1:"Uruguay",t2:"Spain",g:"H",v:"Guadalajara"},
+  {id:65,date:"26 Jun",t1:"Norway",t2:"France",g:"I",v:"Boston"},
+  {id:66,date:"26 Jun",t1:"Senegal",t2:"Iraq",g:"I",v:"Toronto"},
+  {id:67,date:"27 Jun",t1:"Algeria",t2:"Austria",g:"J",v:"Kansas City"},
+  {id:68,date:"27 Jun",t1:"Jordan",t2:"Argentina",g:"J",v:"Dallas"},
+  {id:69,date:"27 Jun",t1:"Colombia",t2:"Portugal",g:"K",v:"Miami"},
+  {id:70,date:"27 Jun",t1:"DR Congo",t2:"Uzbekistan",g:"K",v:"Atlanta"},
+  {id:71,date:"27 Jun",t1:"Panama",t2:"England",g:"L",v:"New York/NJ"},
+  {id:72,date:"27 Jun",t1:"Croatia",t2:"Ghana",g:"L",v:"Philadelphia"},
+];
+
+const KOS=[
+  {stage:"Round of 32",icon:"⚔️",matches:[
+    {id:"k1",d:"28 Jun",h1:"Runner-up A",h2:"Runner-up B"},
+    {id:"k2",d:"29 Jun",h1:"Winner E",h2:"3rd A/B/C/D/F"},
+    {id:"k3",d:"29 Jun",h1:"Winner F",h2:"Runner-up C"},
+    {id:"k4",d:"29 Jun",h1:"Winner C",h2:"Runner-up F"},
+    {id:"k5",d:"30 Jun",h1:"Winner I",h2:"3rd C/D/F/G/H"},
+    {id:"k6",d:"30 Jun",h1:"Runner-up E",h2:"Runner-up I"},
+    {id:"k7",d:"30 Jun",h1:"Winner A",h2:"3rd C/E/F/H/I"},
+    {id:"k8",d:"1 Jul",h1:"Winner L",h2:"3rd E/H/I/J/K"},
+    {id:"k9",d:"1 Jul",h1:"Winner H",h2:"3rd A/B/C/D/E"},
+    {id:"k10",d:"1 Jul",h1:"Winner B",h2:"Runner-up A"},
+    {id:"k11",d:"2 Jul",h1:"Runner-up H",h2:"Runner-up G"},
+    {id:"k12",d:"2 Jul",h1:"Winner G",h2:"3rd D/E/F/G/H"},
+    {id:"k13",d:"2 Jul",h1:"Winner J",h2:"Runner-up K"},
+    {id:"k14",d:"2 Jul",h1:"Winner K",h2:"Runner-up J"},
+    {id:"k15",d:"3 Jul",h1:"Winner D",h2:"Runner-up L"},
+    {id:"k16",d:"3 Jul",h1:"Runner-up D",h2:"Winner L"},
+  ]},
+  {stage:"Round of 16",icon:"⚡",matches:[
+    {id:"k17",d:"4 Jul",h1:"Winner R32-1",h2:"Winner R32-2"},
+    {id:"k18",d:"4 Jul",h1:"Winner R32-3",h2:"Winner R32-4"},
+    {id:"k19",d:"5 Jul",h1:"Winner R32-5",h2:"Winner R32-6"},
+    {id:"k20",d:"5 Jul",h1:"Winner R32-7",h2:"Winner R32-8"},
+    {id:"k21",d:"6 Jul",h1:"Winner R32-9",h2:"Winner R32-10"},
+    {id:"k22",d:"6 Jul",h1:"Winner R32-11",h2:"Winner R32-12"},
+    {id:"k23",d:"7 Jul",h1:"Winner R32-13",h2:"Winner R32-14"},
+    {id:"k24",d:"7 Jul",h1:"Winner R32-15",h2:"Winner R32-16"},
+  ]},
+  {stage:"Quarter-finals",icon:"🔥",matches:[
+    {id:"k25",d:"9 Jul",h1:"Winner R16-1",h2:"Winner R16-2"},
+    {id:"k26",d:"9 Jul",h1:"Winner R16-3",h2:"Winner R16-4"},
+    {id:"k27",d:"10 Jul",h1:"Winner R16-5",h2:"Winner R16-6"},
+    {id:"k28",d:"11 Jul",h1:"Winner R16-7",h2:"Winner R16-8"},
+  ]},
+  {stage:"Semi-finals",icon:"🌟",matches:[
+    {id:"k29",d:"14 Jul",h1:"Winner QF-1",h2:"Winner QF-2"},
+    {id:"k30",d:"15 Jul",h1:"Winner QF-3",h2:"Winner QF-4"},
+  ]},
+  {stage:"3rd Place Play-off",icon:"🥉",matches:[
+    {id:"k31",d:"18 Jul",h1:"Loser SF-1",h2:"Loser SF-2"},
+  ]},
+  {stage:"THE FINAL 🏆",icon:"🏆",matches:[
+    {id:"k32",d:"19 Jul",h1:"Winner SF-1",h2:"Winner SF-2"},
+  ]},
+];
+
+// ── STORAGE (localStorage — works on every phone/browser, no account needed) ──
+const ADMIN_PASS = "appiah2026";
+const LS_PFX = "afwc:";
+let currentPlayer = null;
+
+function lsGet(k){ try{ const v=localStorage.getItem(LS_PFX+k); return v?JSON.parse(v):null; }catch{return null;} }
+function lsSet(k,v){
+  try{
+    const str = JSON.stringify(v);
+    localStorage.setItem(LS_PFX+k, str);
+    // verify write succeeded
+    const verify = localStorage.getItem(LS_PFX+k);
+    if(verify!==str) console.error('lsSet verify failed for',k);
+  }catch(e){ console.error('lsSet error',k,e); }
+}
+
+async function loadPlayer(n){ return lsGet('player:'+n); }
+async function savePlayer(sd){ lsSet('player:'+sd.name, sd); }
+async function getResults(){ return lsGet('results')||{}; }
+async function setResults(r){ lsSet('results',r); }
+async function getKOR(){ return lsGet('ko_results')||{}; }
+async function setKOR(r){ lsSet('ko_results',r); }
+async function getKOT(){ return lsGet('ko_teams')||{}; }
+async function setKOT(t){ lsSet('ko_teams',t); }
+async function getAllPlayers(){
+  try{
+    const out=[];
+    for(let i=0;i<localStorage.length;i++){
+      const key=localStorage.key(i);
+      if(key && key.startsWith(LS_PFX+'player:')){
+        try{ const d=JSON.parse(localStorage.getItem(key)); if(d) out.push(d); }catch{}
+      }
+    }
+    return out;
+  }catch{ return []; }
+}
+
+// ── NAV ───────────────────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const ALL_SCREENS = ['splash','adminLogin','playerLogin','adminApp','playerApp'];
+function hideAll(){ ALL_SCREENS.forEach(id=>{ const el=$(id); if(el) el.style.display='none'; }); }
+function showScreen(id){
+  hideAll();
+  $(id).style.display=(id==='adminApp'||id==='playerApp')?'block':'flex';
+}
+function goSplash(){ showScreen('splash'); currentPlayer=null; Object.keys(pendingPreds).forEach(k=>delete pendingPreds[k]); }
+function goTeacherLogin(){ showScreen('adminLogin'); }
+function goStudentLogin(){ showScreen('playerLogin'); }
+
+function doAdminLogin(){
+  const p=$('aPass').value;
+  if(p!==ADMIN_PASS){ $('aErr').textContent='Incorrect password. Try: appiah2026'; return; }
+  showScreen('adminApp');
+  loadLeaderboard();
+}
+async function doPlayerLogin(){
+  const name=$('pName').value.trim();
+  if(!name){ $('pErr').textContent='Please enter your name'; return; }
+  currentPlayer=name;
+  let sd=await loadPlayer(name);
+  const email  = document.getElementById('pEmail')?.value.trim()||'';
+  const mobile = document.getElementById('pMobile')?.value.trim().replace(/[^0-9]/g,'')||'';
+  if(!sd) sd={name,email,mobile,preds:{},koPreds:{},fav:'',notes:''};
+  else { if(email) sd.email=email; if(mobile) sd.mobile=mobile; }
+  await savePlayer(sd);
+  showScreen('playerApp');
+  $('pHeaderName').textContent=name;
+  $('pHeroName').textContent=name;
+  $('pTallyName').textContent=name;
+  $('pFav').value=sd.fav||'';
+  $('pNotes').value=sd.notes||'';
+  $('pNotes').oninput=pSaveNotes;
+  pFilterGrp('ALL',document.querySelector('.fc'));
+  renderSKO();
+  updatePHeader();
+  _afterPlayerLogin();
+}
+
+// ── TABS ──────────────────────────────────────────────────────────────────────
+function showATab(id,btn){
+  document.querySelectorAll('#adminApp .tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('#adminApp .tab-btn').forEach(b=>b.classList.remove('active'));
+  $('at-'+id).classList.add('active'); btn.classList.add('active');
+  if(id==='lb') loadLeaderboard();
+  if(id==='res') loadResults('group');
+  if(id==='players') loadPlayers();
+  if(id==='rounds') loadRoundsPanel();
+  if(id==='notify') loadNotifyTab();
+}
+function showPTab(id,btn){
+  document.querySelectorAll('#playerApp .tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('#playerApp .tab-btn').forEach(b=>b.classList.remove('active'));
+  $('panel-'+id).classList.add('active'); btn.classList.add('active');
+  if(id==='ptally') updateTally();
+}
+let curResTab='group';
+function showResTab(t,btn){
+  curResTab=t;
+  document.querySelectorAll('.ttab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  loadResults(t);
+}
+
+// ── LEADERBOARD ───────────────────────────────────────────────────────────────
+async function loadLeaderboard(){
+  $('lbContent').innerHTML='<div class="loading"></div>';
+  const [players,results,kor]=await Promise.all([getAllPlayers(),getResults(),getKOR()]);
+  if(!players.length){
+    $('lbContent').innerHTML='<div class="empty">No family members have joined yet! Share the link and let the competition begin 🏆</div>';
+    $('lbSub').textContent='No players yet';
+    return;
+  }
+  const scored=players.map(p=>{
+    const gc=GM.filter(m=>results[m.id]&&p.preds?.[m.id]===results[m.id]).length;
+    const kc=Object.keys(p.koPreds||{}).filter(k=>kor[k]&&p.koPreds[k]===kor[k]).length;
+    const pred=Object.keys(p.preds||{}).length+Object.keys(p.koPreds||{}).length;
+    return{...p,pts:(gc+kc)*3,correct:gc+kc,pred};
+  }).sort((a,b)=>b.pts-a.pts||b.correct-a.correct);
+
+  $('lbSub').textContent=`${players.length} family member${players.length!==1?'s':''} · Live rankings`;
+  const rc=i=>i===0?'r1':i===1?'r2':i===2?'r3':'';
+  const ri=i=>i===0?'🥇':i===1?'🥈':i===2?'🥉':String(i+1);
+
+  $('lbContent').innerHTML=`<div class="lb-wrap">
+    <div class="lb-hdr"><div>#</div><div>Player</div><div style="text-align:center">✓</div><div style="text-align:right">Pts</div></div>
+    ${scored.map((p,i)=>`
+      <div class="lb-row" onclick="showPlayerDetail('${p.name.replace(/'/g,"\\'")}')">
+        <div class="lb-rank ${rc(i)}">${ri(i)}</div>
+        <div><div class="lb-name">${p.name}</div><div class="lb-sub">${p.pred} predictions made</div></div>
+        <div class="lb-cor">${p.correct}</div>
+        <div class="lb-pts">${p.pts}</div>
+      </div>`).join('')}
+  </div>`;
+}
+
+// ── SET RESULTS ───────────────────────────────────────────────────────────────
+async function loadResults(type){
+  $('resContent').innerHTML='<div class="loading"></div>';
+  const [results,kor,kot]=await Promise.all([getResults(),getKOR(),getKOT()]);
+  let html='';
+  if(type==='group'){
+    const byDate={};
+    GM.forEach(m=>{(byDate[m.date]||(byDate[m.date]=[])).push(m);});
+    html='<div class="rs-card"><h3>Group stage results</h3>';
+    Object.entries(byDate).forEach(([date,ms])=>{
+      html+=`<div class="date-lbl">${date}</div>`;
+      ms.forEach(m=>{
+        const r=results[m.id];
+        const s1=r===m.t1?'rset':'',sd=r==='draw'?'dset':'',s2=r===m.t2?'rset':'';
+        html+=`<div class="rs-match">
+          <div class="rs-teams">${m.t1} <span>vs</span> ${m.t2}
+            <span style="float:right;font-size:11px">#${m.id} Grp ${m.g}</span>
+            ${r?`<span style="float:right;margin-right:8px;color:var(--green);font-size:11px;font-weight:800">✓ ${r==='draw'?'Draw':r+' win'}</span>`:''}
+          </div>
+          <div class="rs-btns">
+            <button class="rb ${s1}" onclick="doSetResult(${m.id},'${m.t1.replace(/'/g,"\\'")}',this)">${m.t1} win</button>
+            <button class="rb ${sd}" onclick="doSetResult(${m.id},'draw',this)">Draw</button>
+            <button class="rb ${s2}" onclick="doSetResult(${m.id},'${m.t2.replace(/'/g,"\\'")}',this)">${m.t2} win</button>
+            ${r?`<button class="rb clr" onclick="doClearResult(${m.id})">✕ Clear</button>`:''}
+          </div></div>`;
+      });
+    });
+    html+='</div>';
+  } else {
+    KOS.forEach(stage=>{
+      html+=`<div class="ko-stage-hdr">${stage.icon} ${stage.stage}</div><div class="rs-card">`;
+      stage.matches.forEach(m=>{
+        const teams=kot[m.id]||{};
+        const t1=teams.t1||m.h1,t2=teams.t2||m.h2;
+        const r=kor[m.id];
+        const s1=r===t1?'rset':'',sd=r==='draw'?'dset':'',s2=r===t2?'rset':'';
+        html+=`<div class="rs-match">
+          <div class="ko-pair" style="margin-bottom:6px">
+            <input class="ko-inp" id="kot1-${m.id}" placeholder="${m.h1}" value="${teams.t1||''}" oninput="saveKOTeam('${m.id}')">
+            <span style="color:var(--muted);font-weight:800;font-size:12px;text-align:center">vs</span>
+            <input class="ko-inp" id="kot2-${m.id}" placeholder="${m.h2}" value="${teams.t2||''}" oninput="saveKOTeam('${m.id}')">
+          </div>
+          ${r?`<div style="font-size:11px;color:var(--green);font-weight:800;margin-bottom:6px">✓ Result: ${r==='draw'?'Draw':r+' win'}</div>`:''}
+          <div class="rs-btns">
+            <button class="rb ${s1}" onclick="doSetKOR('${m.id}','t1',this)">${t1} win</button>
+            <button class="rb ${sd}" onclick="doSetKOR('${m.id}','draw',this)">Draw</button>
+            <button class="rb ${s2}" onclick="doSetKOR('${m.id}','t2',this)">${t2} win</button>
+            ${r?`<button class="rb clr" onclick="doClearKOR('${m.id}')">✕ Clear</button>`:''}
+          </div></div>`;
+      });
+      html+='</div>';
+    });
+  }
+  $('resContent').innerHTML=html;
+}
+
+async function doSetResult(id,winner){
+  const r=await getResults(); r[id]=winner; await setResults(r);
+  toast('✅ Result saved — points awarded!'); loadResults('group');
+  maybeAutoNotify(id);
+}
+async function doClearResult(id){
+  const r=await getResults(); delete r[id]; await setResults(r); loadResults('group');
+}
+async function doSetKOR(id,which){
+  const kot=await getKOT(); const teams=kot[id]||{};
+  const t=which==='draw'?'draw':which==='t1'?(teams.t1||'Team 1'):(teams.t2||'Team 2');
+  const kor=await getKOR(); kor[id]=t; await setKOR(kor);
+  toast('✅ Result saved!'); loadResults('knockout');
+}
+async function doClearKOR(id){
+  const kor=await getKOR(); delete kor[id]; await setKOR(kor); loadResults('knockout');
+}
+async function saveKOTeam(id){
+  const kot=await getKOT();
+  kot[id]={t1:$('kot1-'+id)?.value.trim()||'',t2:$('kot2-'+id)?.value.trim()||''};
+  await setKOT(kot);
+}
+
+// ── PLAYERS LIST ──────────────────────────────────────────────────────────────
+async function loadPlayers(){
+  $('playersContent').innerHTML='<div class="loading"></div>';
+  const [players,results,kor]=await Promise.all([getAllPlayers(),getResults(),getKOR()]);
+  if(!players.length){ $('playersContent').innerHTML='<div class="empty">No players yet.</div>'; return; }
+  const scored=players.map(p=>{
+    const gc=GM.filter(m=>results[m.id]&&p.preds?.[m.id]===results[m.id]).length;
+    const kc=Object.keys(p.koPreds||{}).filter(k=>kor[k]&&p.koPreds[k]===kor[k]).length;
+    return{...p,pts:(gc+kc)*3,correct:gc+kc};
+  }).sort((a,b)=>b.pts-a.pts);
+  $('playersContent').innerHTML=scored.map(p=>`
+    <div class="match-card" onclick="showPlayerDetail('${p.name.replace(/'/g,"\\'")}')">
+      <div class="match-top">
+        <span class="mdate" style="font-size:14px;font-weight:800">${p.name}</span>
+        <span class="chip cd">${p.pts} pts</span>
+      </div>
+      <div class="match-body" style="padding-bottom:10px">
+        <div style="display:flex;gap:16px;font-size:13px;color:var(--muted);font-weight:700">
+          <span>📋 ${Object.keys(p.preds||{}).length+Object.keys(p.koPreds||{}).length} predictions</span>
+          <span>✅ ${p.correct} correct</span>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+async function showPlayerDetail(name){
+  const [sd,results,kor]=await Promise.all([loadPlayer(name),getResults(),getKOR()]);
+  if(!sd) return;
+  const gc=GM.filter(m=>results[m.id]&&sd.preds?.[m.id]===results[m.id]).length;
+  const kc=Object.keys(sd.koPreds||{}).filter(k=>kor[k]&&sd.koPreds[k]===kor[k]).length;
+  const pts=(gc+kc)*3;
+  let html=`<button onclick="loadPlayers()" style="display:flex;align-items:center;gap:5px;background:none;border:none;
+    color:var(--red);font-family:var(--FB);font-size:14px;font-weight:800;cursor:pointer;margin-bottom:12px;padding:0">
+    ← Back to all players</button>
+  <div class="sd-card">
+    <div class="sd-hdr"><h3>${sd.name}</h3><div class="sd-pts">${pts} pts</div></div>`;
+  GM.forEach(m=>{
+    const pred=sd.preds?.[m.id];
+    const res=results[m.id];
+    if(!pred&&!res) return;
+    const correct=res&&pred&&pred===res;
+    const wrong=res&&pred&&pred!==res;
+    html+=`<div class="sd-row">
+      <div class="sd-m">${m.t1} vs ${m.t2}</div>
+      <div class="sd-p">${pred||'—'}</div>
+      <div class="sd-pts2">${correct?'+3':wrong?'✗':''}</div>
+    </div>`;
+  });
+  html+='</div>';
+  $('playersContent').innerHTML=html;
+}
+
+// ── PLAYER PREDICTIONS ────────────────────────────────────────────────────────
+let pCurFilter='ALL';
+async function pFilterGrp(grp,btn){
+  pCurFilter=grp;
+  document.querySelectorAll('.fc').forEach(c=>c.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  await renderPGroup();
+}
+
+async function renderPGroup(){
+  if(!currentPlayer) return;
+  const [sd,results]=await Promise.all([loadPlayer(currentPlayer),getResults()]);
+  if(!sd) return;
+  const matches=pCurFilter==='ALL'?GM:pCurFilter==='todo'?GM.filter(m=>!sd.preds?.[m.id]):GM.filter(m=>m.g===pCurFilter);
+  const list=$('pGroupList');
+  if(!matches.length){list.innerHTML='<div class="empty">No matches here</div>';return;}
+  const byDate={};
+  matches.forEach(m=>{(byDate[m.date]||(byDate[m.date]=[])).push(m);});
+  list.innerHTML='';
+  Object.entries(byDate).forEach(([date,ms])=>{
+    const dl=document.createElement('div');
+    dl.className='date-lbl';dl.textContent=date;list.appendChild(dl);
+    ms.forEach(m=>{list.appendChild(buildPCard(m,sd,results));});
+  });
+}
+
+// pendingPreds: in-memory un-saved selections { matchId: team }
+const pendingPreds = {};
+
+function buildPCard(m, sd, results){
+  const saved   = sd.preds?.[m.id];
+  const locked  = !!(sd.lockedPreds?.[m.id]);
+  const pending = pendingPreds[m.id];
+  const res     = results[m.id];
+  const correct = res && saved && saved===res;
+  const wrong   = res && saved && saved!==res;
+  const hasPend = pending !== undefined;
+
+  const card = document.createElement('div');
+  card.className = 'match-card' +
+    (locked ? ' lock-done' : '') +
+    (!locked && saved && !res ? ' predicted' : '') +
+    (correct ? ' correct' : '') +
+    (wrong   ? ' wrong'   : '');
+  card.id = 'pmc-'+m.id;
+
+  let chip = '';
+  if(correct)        chip='<span class="chip cc">✅ Correct!</span>';
+  else if(wrong)     chip='<span class="chip cw">❌ Wrong</span>';
+  else if(locked)    chip='<span class="locked-badge">🔒 Locked</span>';
+  else if(hasPend)   chip='<span class="chip" style="background:#fef3c7;color:#92400e">⏳ Unsaved</span>';
+  else if(saved)     chip='<span class="chip" style="background:#dbeafe;color:#1e40af">💾 Saved</span>';
+  else               chip='<span class="chip cp">Predict</span>';
+
+  let body = '';
+  if(res){
+    const icon=correct?'✅':wrong?'❌':'—';
+    const cls=correct?'rc':wrong?'rw2':'';
+    const pts=correct?'<span class="ptsbadge">+3 pts</span>':'';
+    body=`<div class="rrow ${cls}">${icon} ${saved?`Picked: <strong>${saved}</strong> · `:'No prediction · '}Result: <strong>${res}</strong>${pts}</div>`;
+  } else if(locked){
+    body=`<div class="locked-disp"><span style="font-size:18px">🔒</span>
+      <span class="ld-team">${saved==='draw'?'Draw':saved}</span>
+      <span style="font-size:12px;color:#7c3aed;font-weight:600;margin-left:auto">Locked in</span></div>`;
+  } else if(hasPend){
+    const sel=pending;
+    const s1=sel===m.t1?'pending':'', sd2=sel==='draw'?'pending':'', s2=sel===m.t2?'pending':'';
+    body=`<div class="pred-area"><div class="pred-lbl">✏ Tap your prediction</div>
+      <div class="pred-btns">
+        <button class="pb ${s1}" onclick="selectPred(${m.id},'t1')">${m.t1}</button>
+        <button class="pb dr ${sd2}" onclick="selectPred(${m.id},'draw')">Draw</button>
+        <button class="pb ${s2}" onclick="selectPred(${m.id},'t2')">${m.t2}</button>
+      </div>
+      <button class="save-pred-btn" onclick="savePred(${m.id})">💾 Save — <strong>${sel==='draw'?'Draw':sel}</strong></button>
+    </div>`;
+  } else if(saved){
+    const s1=saved===m.t1?'sel':'', sd2=saved==='draw'?'sel':'', s2=saved===m.t2?'sel':'';
+    body=`<div class="pred-area"><div class="pred-lbl">✏ Change pick or lock it in</div>
+      <div class="pred-btns">
+        <button class="pb ${s1}" onclick="selectPred(${m.id},'t1')">${m.t1}</button>
+        <button class="pb dr ${sd2}" onclick="selectPred(${m.id},'draw')">Draw</button>
+        <button class="pb ${s2}" onclick="selectPred(${m.id},'t2')">${m.t2}</button>
+      </div>
+      <button class="lock-pred-btn" onclick="lockPred(${m.id})">🔒 Lock in — <strong>${saved==='draw'?'Draw':saved}</strong></button>
+    </div>`;
+  } else {
+    body=`<div class="pred-area"><div class="pred-lbl">✏ Tap your prediction</div>
+      <div class="pred-btns">
+        <button class="pb" onclick="selectPred(${m.id},'t1')">${m.t1}</button>
+        <button class="pb dr" onclick="selectPred(${m.id},'draw')">Draw</button>
+        <button class="pb" onclick="selectPred(${m.id},'t2')">${m.t2}</button>
+      </div>
+    </div>`;
+  }
+
+  card.innerHTML=`
+    <div class="match-top">
+      <span class="mnum">#${m.id}</span>
+      <span class="mdate">${m.date}</span>
+      <span class="mvenue">${m.v}</span>
+      ${chip}
+    </div>
+    <div class="match-body">
+      <div class="teams-row">
+        <div class="tname">Grp ${m.g} · ${m.t1}</div>
+        <div class="vsbadge">VS</div>
+        <div class="tname r">${m.t2}</div>
+      </div>
+      ${body}
+    </div>`;
+  return card;
+}
+
+// Step 1: highlight only — nothing saved yet
+async function selectPred(id, which){
+  const sd = await loadPlayer(currentPlayer);
+  if(!sd) return;
+  if(sd.lockedPreds?.[id]){ toast('🔒 This prediction is locked!'); return; }
+  if(sd.groupLocked){ toast('🔒 All your predictions are locked!'); return; }
+  if(getRoundStatus('group')==='closed'){ toast('🔒 Group stage is closed.'); return; }
+  const m = GM.find(x=>x.id===id);
+  pendingPreds[id] = which==='draw'?'draw':which==='t1'?m.t1:m.t2;
+  const results = await getResults();
+  const old = document.getElementById('pmc-'+id);
+  if(old) old.replaceWith(buildPCard(m, sd, results));
+}
+
+// Step 2: write to localStorage, show lock button
+async function savePred(id){
+  const sd = await loadPlayer(currentPlayer);
+  if(!sd){ toast('⚠️ Profile not found. Please sign back in.'); return; }
+  const team = pendingPreds[id];
+  if(!team){ toast('⚠️ Nothing selected yet.'); return; }
+  sd.preds = sd.preds||{};
+  sd.preds[id] = team;
+  delete pendingPreds[id];
+  lsSet('player:'+sd.name, sd);
+  const verify = lsGet('player:'+sd.name);
+  if(!verify || verify.preds?.[id]!==team){
+    toast('⚠️ Save failed — please try again!');
+    console.error('savePred verify failed', id, team);
+    return;
+  }
+  toast('💾 Saved! Now lock it in when ready.');
+  const m = GM.find(x=>x.id===id);
+  const results = await getResults();
+  const old = document.getElementById('pmc-'+id);
+  if(old) old.replaceWith(buildPCard(m, sd, results));
+  updatePHeader();
+  renderLockBar();
+}
+
+// Step 3: lock — prediction frozen permanently
+async function lockPred(id){
+  const sd = await loadPlayer(currentPlayer);
+  if(!sd){ toast('⚠️ Profile not found.'); return; }
+  if(!sd.preds?.[id]){ toast('⚠️ Save your prediction first!'); return; }
+  sd.lockedPreds = sd.lockedPreds||{};
+  sd.lockedPreds[id] = true;
+  lsSet('player:'+sd.name, sd);
+  const verify = lsGet('player:'+sd.name);
+  if(!verify || !verify.lockedPreds?.[id]){
+    toast('⚠️ Lock failed — please try again!'); return;
+  }
+  toast('🔒 Locked in — '+sd.preds[id]+'!');
+  const m = GM.find(x=>x.id===id);
+  const results = await getResults();
+  const old = document.getElementById('pmc-'+id);
+  if(old) old.replaceWith(buildPCard(m, sd, results));
+  updatePHeader();
+}
+
+// doPred routes to selectPred for backwards compat
+async function doPred(id, which){ await selectPred(id, which); }
+
+async function renderPKO(){
+  if(!currentPlayer) return;
+  const [sd,kor,kot]=await Promise.all([loadPlayer(currentPlayer),getKOR(),getKOT()]);
+  if(!sd) return;
+  const list=$('pKOList');list.innerHTML='';
+  KOS.forEach(stage=>{
+    const hdr=document.createElement('div');
+    hdr.className='ko-stage-hdr';hdr.textContent=`${stage.icon} ${stage.stage}`;
+    list.appendChild(hdr);
+    stage.matches.forEach(m=>{
+      const teams=kot[m.id]||{};
+      const t1=teams.t1||'',t2=teams.t2||'';
+      const pred=sd.koPreds?.[m.id];
+      const res=kor[m.id];
+      const correct=res&&pred&&pred===res;
+      const wrong=res&&pred&&pred!==res;
+      const card=document.createElement('div');
+      card.className='match-card'+(pred&&!res?' predicted':'')+(correct?' correct':'')+(wrong?' wrong':'');
+      card.id='pko-'+m.id;
+      let chip='';
+      if(correct)                    chip='<span class="chip cc">✅ Correct!</span>';
+      else if(wrong)                 chip='<span class="chip cw">❌ Wrong</span>';
+      else if(sd.lockedPreds?.[m.id])chip='<span class="locked-badge">🔒 Locked</span>';
+      else if(pendingPreds['ko_'+m.id]!==undefined) chip='<span class="chip" style="background:#fef3c7;color:#92400e">⏳ Unsaved</span>';
+      else if(pred&&!res)            chip='<span class="chip" style="background:#dbeafe;color:#1e40af">💾 Saved</span>';
+      const locked2=!!(sd.lockedPreds?.[m.id]);
+      const pending2=pendingPreds['ko_'+m.id];
+      let body='';
+      if(res){
+        const icon=correct?'✅':wrong?'❌':'—';
+        const cls=correct?'rc':wrong?'rw2':'';
+        const pts=correct?'<span class="ptsbadge">+3 pts</span>':'';
+        body=`<div style="font-weight:800;font-size:14px;margin-bottom:6px">${t1||m.h1} vs ${t2||m.h2}</div>
+          <div class="rrow ${cls}">${icon} ${pred?`Picked: <strong>${pred}</strong> · `:'No prediction · '}Result: <strong>${res}</strong>${pts}</div>`;
+      } else if(locked2){
+        body=`<div style="font-weight:800;font-size:13px;color:var(--muted);margin-bottom:6px">${t1||m.h1} vs ${t2||m.h2}</div>
+          <div class="locked-disp"><span style="font-size:18px">🔒</span>
+          <span class="ld-team">${pred==='draw'?'Draw':pred}</span>
+          <span style="font-size:12px;color:#7c3aed;font-weight:600;margin-left:auto">Locked in</span></div>`;
+      } else if(pending2!==undefined){
+        const sel=pending2;
+        const s1=sel===t1&&t1?'pending':'',sd2=sel==='draw'?'pending':'',s2=sel===t2&&t2?'pending':'';
+        body=`<div class="ko-pair"><input class="ko-inp" value="${t1}" placeholder="${m.h1}" disabled>
+          <div class="vsbadge">VS</div><input class="ko-inp" value="${t2}" placeholder="${m.h2}" disabled></div>
+          <div class="pred-area"><div class="pred-lbl">✏ Tap your prediction</div>
+          <div class="pred-btns">
+            <button class="pb ${s1}" onclick="selectKOPred('${m.id}','t1')">${t1||m.h1}</button>
+            <button class="pb dr ${sd2}" onclick="selectKOPred('${m.id}','draw')">Draw</button>
+            <button class="pb ${s2}" onclick="selectKOPred('${m.id}','t2')">${t2||m.h2}</button>
+          </div>
+          <button class="save-pred-btn" onclick="saveKOPred('${m.id}')">💾 Save — <strong>${sel==='draw'?'Draw':sel}</strong></button></div>`;
+      } else if(pred){
+        const s1=pred===t1&&t1?'sel':'',sd2=pred==='draw'?'sel':'',s2=pred===t2&&t2?'sel':'';
+        body=`<div class="ko-pair"><input class="ko-inp" value="${t1}" placeholder="${m.h1}" disabled>
+          <div class="vsbadge">VS</div><input class="ko-inp" value="${t2}" placeholder="${m.h2}" disabled></div>
+          <div class="pred-area"><div class="pred-lbl">✏ Change or lock your pick</div>
+          <div class="pred-btns">
+            <button class="pb ${s1}" onclick="selectKOPred('${m.id}','t1')">${t1||m.h1}</button>
+            <button class="pb dr ${sd2}" onclick="selectKOPred('${m.id}','draw')">Draw</button>
+            <button class="pb ${s2}" onclick="selectKOPred('${m.id}','t2')">${t2||m.h2}</button>
+          </div>
+          <button class="lock-pred-btn" onclick="lockKOPred('${m.id}')">🔒 Lock in — <strong>${pred==='draw'?'Draw':pred}</strong></button></div>`;
+      } else {
+        body=`<div class="ko-pair"><input class="ko-inp" value="${t1}" placeholder="${m.h1}" disabled>
+          <div class="vsbadge">VS</div><input class="ko-inp" value="${t2}" placeholder="${m.h2}" disabled></div>
+          <div class="pred-area"><div class="pred-lbl">✏ Tap your prediction</div>
+          <div class="pred-btns">
+            <button class="pb" onclick="selectKOPred('${m.id}','t1')">${t1||m.h1}</button>
+            <button class="pb dr" onclick="selectKOPred('${m.id}','draw')">Draw</button>
+            <button class="pb" onclick="selectKOPred('${m.id}','t2')">${t2||m.h2}</button>
+          </div></div>`;
+      }
+      card.innerHTML=`
+        <div class="match-top">
+          <span class="mnum">${m.id}</span>
+          <span class="mdate">${m.d}</span>
+          ${chip}
+        </div>
+        <div class="match-body">${body}</div>`;
+      list.appendChild(card);
+    });
+  });
+}
+
+// KO select→save→lock
+async function selectKOPred(id, which){
+  const [sd,kot]=await Promise.all([loadPlayer(currentPlayer),getKOT()]);
+  if(!sd) return;
+  if(sd.lockedPreds?.[id]){ toast('🔒 This prediction is locked!'); return; }
+  const roundMap={'k1':'r32','k2':'r32','k3':'r32','k4':'r32','k5':'r32','k6':'r32','k7':'r32','k8':'r32',
+    'k9':'r32','k10':'r32','k11':'r32','k12':'r32','k13':'r32','k14':'r32','k15':'r32','k16':'r32',
+    'k17':'r16','k18':'r16','k19':'r16','k20':'r16','k21':'r16','k22':'r16','k23':'r16','k24':'r16',
+    'k25':'qf','k26':'qf','k27':'qf','k28':'qf','k29':'sf','k30':'sf','k31':'final','k32':'final'};
+  if(getRoundStatus(roundMap[id]||'r32')!=='open'){ toast('⏳ This round is not open yet.'); return; }
+  const teams=kot[id]||{};
+  const allM=KOS.flatMap(s=>s.matches);
+  const m=allM.find(x=>x.id===id);
+  pendingPreds['ko_'+id]=which==='draw'?'draw':which==='t1'?(teams.t1||m?.h1||'Team 1'):(teams.t2||m?.h2||'Team 2');
+  renderPKO();
+}
+async function saveKOPred(id){
+  const sd=await loadPlayer(currentPlayer);
+  if(!sd){ toast('⚠️ Profile not found.'); return; }
+  const team=pendingPreds['ko_'+id];
+  if(!team){ toast('⚠️ Nothing selected.'); return; }
+  sd.koPreds=sd.koPreds||{}; sd.koPreds[id]=team;
+  delete pendingPreds['ko_'+id];
+  lsSet('player:'+sd.name, sd);
+  const v=lsGet('player:'+sd.name);
+  if(!v||v.koPreds?.[id]!==team){ toast('⚠️ Save failed — try again!'); return; }
+  toast('💾 Saved! Now lock it in.');
+  renderPKO(); updatePHeader();
+}
+async function lockKOPred(id){
+  const sd=await loadPlayer(currentPlayer);
+  if(!sd){ toast('⚠️ Profile not found.'); return; }
+  if(!sd.koPreds?.[id]){ toast('⚠️ Save first!'); return; }
+  sd.lockedPreds=sd.lockedPreds||{}; sd.lockedPreds[id]=true;
+  lsSet('player:'+sd.name, sd);
+  const v=lsGet('player:'+sd.name);
+  if(!v||!v.lockedPreds?.[id]){ toast('⚠️ Lock failed — try again!'); return; }
+  toast('🔒 Locked in — '+sd.koPreds[id]+'!');
+  renderPKO(); updatePHeader();
+}
+async function doKOPred(id,which){ await selectKOPred(id,which); }
+
+async function updatePHeader(){
+  if(!currentPlayer) return;
+  const [sd,results,kor]=await Promise.all([loadPlayer(currentPlayer),getResults(),getKOR()]);
+  if(!sd) return;
+  const gc=GM.filter(m=>results[m.id]&&sd.preds?.[m.id]===results[m.id]).length;
+  const kc=Object.keys(sd.koPreds||{}).filter(k=>kor[k]&&sd.koPreds[k]===kor[k]).length;
+  const pred=Object.keys(sd.preds||{}).length+Object.keys(sd.koPreds||{}).length;
+  const pts=(gc+kc)*3;
+  $('pHeaderPts').innerHTML=`${pts}<span>Points</span>`;
+  $('pProgTxt').textContent=`${pred} / 104`;
+  $('pProgBar').style.width=`${(pred/104)*100}%`;
+  $('pSPred').textContent=pred;
+  $('pSCorrect').textContent=gc+kc;
+  $('pSPts').textContent=pts;
+}
+
+async function updateTally(){
+  if(!currentPlayer) return;
+  const [sd,results,kor]=await Promise.all([loadPlayer(currentPlayer),getResults(),getKOR()]);
+  if(!sd) return;
+  const gc=GM.filter(m=>results[m.id]&&sd.preds?.[m.id]===results[m.id]).length;
+  const kc=Object.keys(sd.koPreds||{}).filter(k=>kor[k]&&sd.koPreds[k]===kor[k]).length;
+  const pred=Object.keys(sd.preds||{}).length+Object.keys(sd.koPreds||{}).length;
+  $('pTallyPts').textContent=(gc+kc)*3;
+  $('bbPred').textContent=pred;
+  $('bbCorrect').textContent=gc+kc;
+  $('bbGPts').textContent=gc*3;
+  $('bbKPts').textContent=kc*3;
+}
+
+async function pSaveFav(){
+  const sd=await loadPlayer(currentPlayer);if(!sd)return;
+  sd.fav=$('pFav').value;await savePlayer(sd);
+}
+async function pSaveNotes(){
+  const sd=await loadPlayer(currentPlayer);if(!sd)return;
+  sd.notes=$('pNotes').value;await savePlayer(sd);
+}
+
+function toast(msg='✅ Saved!'){
+  const t=$('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+// ── EMAILJS & NOTIFICATION FUNCTIONS ────────────────────────────────────────
+
+function getEJSConfig(){ return lsGet('ejs_config')||{service:'',template:'',publicKey:''}; }
+function saveEJSConfig(){
+  const cfg={
+    service:  document.getElementById('ejsService').value.trim(),
+    template: document.getElementById('ejsTemplate').value.trim(),
+    publicKey:document.getElementById('ejsPublicKey').value.trim(),
+  };
+  if(!cfg.service||!cfg.template||!cfg.publicKey){
+    toast('⚠️ Please fill in all three fields'); return;
+  }
+  lsSet('ejs_config',cfg);
+  emailjs.init(cfg.publicKey);
+  updateEJSBadge();
+  toggleEJSConfig();
+  toast('✅ EmailJS configured!');
+}
+function updateEJSBadge(){
+  const cfg=getEJSConfig();
+  const badge=document.getElementById('ejsBadge');
+  if(!badge) return;
+  if(cfg.service&&cfg.template&&cfg.publicKey){
+    badge.textContent='✅ Active';
+    badge.style.background='#dcfce7';badge.style.color='#14532d';
+  } else {
+    badge.textContent='Not configured';
+    badge.style.background='#fee2e2';badge.style.color='#b91c1c';
+  }
+}
+function toggleEJSConfig(){
+  const el=document.getElementById('ejsConfig');
+  const btn=document.getElementById('ejsToggleBtn');
+  const open=el.classList.toggle('open');
+  btn.textContent=open?'▲ Hide credentials':'⚙️ Enter EmailJS credentials';
+  if(open){
+    const cfg=getEJSConfig();
+    document.getElementById('ejsService').value=cfg.service||'';
+    document.getElementById('ejsTemplate').value=cfg.template||'';
+    document.getElementById('ejsPublicKey').value=cfg.publicKey||'';
+  }
+}
+
+async function loadNotifyTab(){
+  updateEJSBadge();
+  loadEmailList();
+}
+
+async function loadEmailList(){
+  const el=document.getElementById('emailListContent');
+  if(!el) return;
+  const players=await getAllPlayers();
+  if(!players.length){ el.innerHTML='<div class="empty">No players yet.</div>'; return; }
+  const withEmail=players.filter(p=>p.email).length;
+  const withMobile=players.filter(p=>p.mobile).length;
+  let h=`<p style="font-size:13px;color:var(--muted);font-weight:600;margin-bottom:12px;line-height:1.7">
+    📧 <strong style="color:var(--green)">${withEmail}</strong> email · 
+    💬 <strong style="color:#25D366">${withMobile}</strong> WhatsApp · 
+    👤 <strong>${players.length}</strong> total</p>`;
+  players.sort((a,b)=>a.name.localeCompare(b.name)).forEach(p=>{
+    h+=`<div style="padding:9px 0;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:3px">
+      <div style="font-weight:800;font-size:14px;color:var(--black)">${p.name}</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <span style="font-size:12px;color:${p.email?'#4285F4':'#ccc'};font-weight:600">
+          📧 ${p.email||'no email'}
+        </span>
+        <span style="font-size:12px;color:${p.mobile?'#25D366':'#ccc'};font-weight:600">
+          💬 ${p.mobile?'+'+p.mobile:'no WhatsApp'}
+        </span>
+      </div>
+    </div>`;
+  });
+  el.innerHTML=h;
+}
+
+async function buildLeaderboardText(){
+  const [players,results,kor]=await Promise.all([getAllPlayers(),getResults(),getKOR()]);
+  const scored=players.map(p=>{
+    const gc=GM.filter(m=>results[m.id]&&p.preds?.[m.id]===results[m.id]).length;
+    const kc=Object.keys(p.koPreds||{}).filter(k=>kor[k]&&p.koPreds[k]===kor[k]).length;
+    return{...p,pts:(gc+kc)*3,correct:gc+kc};
+  }).sort((a,b)=>b.pts-a.pts||b.correct-a.correct);
+
+  const totalResults=Object.keys(results).length+Object.keys(kor).length;
+  const ri=i=>i===0?'🥇':i===1?'🥈':i===2?'🥉':`${i+1}.`;
+  const lines=scored.map((p,i)=>`${ri(i)} ${p.name}  —  ${p.pts} pts  (${p.correct} correct)`);
+
+  return {
+    scored,
+    subject: `🏆 Appiah Family WC 2026 — Leaderboard Update (${totalResults} results in)`,
+    body: [
+      `🏆 APPIAH FAMILY WORLD CUP 2026`,
+      `Leaderboard Update · ${new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long'})}`,
+      ``,
+      ...lines,
+      ``,
+      `${totalResults} match results in so far. Keep predicting! ⚽`,
+      ``,
+      `Open your prediction pack to update your picks 👉`,
+    ].join('\n'),
+  };
+}
+
+async function sendLeaderboardEmails(){
+  const cfg=getEJSConfig();
+  const logEl=document.getElementById('lbSendLog');
+  logEl.style.display='block'; logEl.innerHTML='';
+
+  if(!cfg.service||!cfg.template||!cfg.publicKey){
+    logEl.innerHTML='<div class="log-err">⚠️ EmailJS not configured — use the Setup card above first.</div>'; return;
+  }
+  emailjs.init(cfg.publicKey);
+  const {scored,subject,body}=await buildLeaderboardText();
+  const recipients=scored.filter(p=>p.email);
+  if(!recipients.length){
+    logEl.innerHTML='<div class="log-err">⚠️ No players have provided their email address yet.</div>'; return;
+  }
+  logEl.innerHTML=`<div class="log-info">Sending to ${recipients.length} recipient${recipients.length!==1?'s':''}...</div>`;
+
+  let ok=0,fail=0;
+  for(const p of recipients){
+    try{
+      await emailjs.send(cfg.service, cfg.template, {
+        to_email: p.email,
+        to_name:  p.name,
+        subject,
+        message:  body.replace(/\n/g,'<br>'),
+      });
+      ok++;
+      logEl.innerHTML+=`<div class="log-ok">✅ Sent to ${p.name} (${p.email})</div>`;
+    } catch(e){
+      fail++;
+      logEl.innerHTML+=`<div class="log-err">❌ Failed: ${p.name} — ${e?.text||e}</div>`;
+    }
+  }
+  logEl.innerHTML+=`<div class="log-info" style="margin-top:6px;border-top:1px solid #eee;padding-top:6px">Done — ${ok} sent, ${fail} failed.</div>`;
+  toast(`✅ Sent to ${ok} family member${ok!==1?'s':''}!`);
+}
+
+async function sendLeaderboardMailto(){
+  const {subject,body}=await buildLeaderboardText();
+  const players=await getAllPlayers();
+  const emails=players.filter(p=>p.email).map(p=>p.email).join(',');
+  const url=`mailto:${emails}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body.replace(/\n/g,'\r\n'))}`;
+  window.open(url,'_blank');
+}
+
+// ── INDIVIDUAL WA — Leaderboard ──────────────────────────────────────────
+async function waIndividualLeaderboard(){
+  const {scored,body}=await buildLeaderboardText();
+  const players = await getAllPlayers();
+  const withMobile = players.filter(p=>p.mobile);
+  if(!withMobile.length){
+    toast('⚠️ No WhatsApp numbers on file yet');
+    return;
+  }
+  // Open one WA link per player in sequence with short delay
+  let i=0;
+  const sendNext=()=>{
+    if(i>=withMobile.length) return;
+    const p=withMobile[i++];
+    const rank=scored.findIndex(s=>s.name===p.name)+1;
+    const ri=rank===1?'🥇':rank===2?'🥈':rank===3?'🥉':`#${rank}`;
+    const playerScore=scored.find(s=>s.name===p.name);
+    const msg=[
+      `Hi ${p.name}! 🏆 *Appiah Family WC 2026 Update*`,
+      ``,
+      `Your current position: *${ri} with ${playerScore?.pts||0} points* (${playerScore?.correct||0} correct)`,
+      ``,
+      `🏆 *Full Leaderboard:*`,
+      ...scored.slice(0,5).map((s,idx)=>{
+        const r=idx===0?'🥇':idx===1?'🥈':idx===2?'🥉':`${idx+1}.`;
+        return `${r} ${s.name} — ${s.pts} pts`;
+      }),
+      scored.length>5?`...and ${scored.length-5} more`:'',
+      ``,
+      `Keep predicting! ⚽`,
+    ].filter(l=>l!==undefined).join('\n');
+    window.open(`https://wa.me/${p.mobile}?text=${encodeURIComponent(msg)}`,'_blank');
+    if(i<withMobile.length){
+      setTimeout(()=>{
+        if(confirm(`Sent to ${p.name}. Open WhatsApp for ${withMobile[i].name} next?`)) sendNext();
+      },1500);
+    } else {
+      toast(`✅ All ${withMobile.length} WhatsApp messages opened!`);
+    }
+  };
+  sendNext();
+}
+
+// ── GROUP WA — Leaderboard ────────────────────────────────────────────────
+async function waGroupLeaderboard(){
+  const {body}=await buildLeaderboardText();
+  window.open(`https://wa.me/?text=${encodeURIComponent(body)}`,'_blank');
+}
+
+// keep old name as alias
+async function shareLeaderboardWhatsApp(){ waGroupLeaderboard(); }
+
+async function copyLeaderboard(){
+  const {body}=await buildLeaderboardText();
+  try{
+    await navigator.clipboard.writeText(body.replace(/\n/g,'\n'));
+    toast('📋 Leaderboard copied!');
+  } catch{
+    prompt('Copy this text:',body);
+  }
+}
+
+// Per-player result notification
+async function sendResultEmails(){
+  const cfg=getEJSConfig();
+  const logEl=document.getElementById('resSendLog');
+  logEl.style.display='block'; logEl.innerHTML='';
+  if(!cfg.service||!cfg.template||!cfg.publicKey){
+    logEl.innerHTML='<div class="log-err">⚠️ EmailJS not configured.</div>'; return;
+  }
+  emailjs.init(cfg.publicKey);
+  const [players,results,kor]=await Promise.all([getAllPlayers(),getResults(),getKOR()]);
+  const recipients=players.filter(p=>p.email);
+  if(!recipients.length){
+    logEl.innerHTML='<div class="log-err">⚠️ No email addresses found.</div>'; return;
+  }
+  const totalResults=Object.keys(results).length;
+  logEl.innerHTML=`<div class="log-info">Sending personalised updates to ${recipients.length} players...</div>`;
+  let ok=0,fail=0;
+  for(const p of recipients){
+    const gc=GM.filter(m=>results[m.id]&&p.preds?.[m.id]===results[m.id]).length;
+    const kc=Object.keys(p.koPreds||{}).filter(k=>kor[k]&&p.koPreds[k]===kor[k]).length;
+    const pts=(gc+kc)*3;
+    const scored=[...players].map(x=>{
+      const g=GM.filter(m=>results[m.id]&&x.preds?.[m.id]===results[m.id]).length;
+      const k2=Object.keys(x.koPreds||{}).filter(k=>kor[k]&&x.koPreds[k]===kor[k]).length;
+      return{name:x.name,pts:(g+k2)*3};
+    }).sort((a,b)=>b.pts-a.pts);
+    const rank=scored.findIndex(x=>x.name===p.name)+1;
+    const ri=rank===1?'🥇':rank===2?'🥈':rank===3?'🥉':`#${rank}`;
+    const msg=[
+      `Hi ${p.name}! Here's your Appiah Family WC 2026 update 🏆`,
+      ``,
+      `Your score: ${pts} points · ${gc+kc} correct predictions`,
+      `Your rank: ${ri} out of ${players.length} family members`,
+      ``,
+      `${totalResults} match results in so far.`,
+      `Open your prediction pack to make more picks before the next matches! ⚽`,
+    ].join('\n');
+    try{
+      await emailjs.send(cfg.service,cfg.template,{
+        to_email:p.email,to_name:p.name,
+        subject:`${ri} You are ranked ${ri} — Appiah Family WC 2026 Update`,
+        message:msg.replace(/\n/g,'<br>'),
+      });
+      ok++;
+      logEl.innerHTML+=`<div class="log-ok">✅ ${p.name} — ${ri} ${pts} pts</div>`;
+    } catch(e){
+      fail++;
+      logEl.innerHTML+=`<div class="log-err">❌ Failed: ${p.name}</div>`;
+    }
+  }
+  logEl.innerHTML+=`<div class="log-info" style="margin-top:6px;border-top:1px solid #eee;padding-top:6px">Done — ${ok} sent, ${fail} failed.</div>`;
+  toast(`✅ Personalised updates sent to ${ok} player${ok!==1?'s':''}!`);
+}
+
+// ── INDIVIDUAL WA — Results (personalised) ───────────────────────────────
+async function waIndividualResults(){
+  const [players,results,kor]=await Promise.all([getAllPlayers(),getResults(),getKOR()]);
+  const withMobile=players.filter(p=>p.mobile);
+  if(!withMobile.length){ toast('⚠️ No WhatsApp numbers on file yet'); return; }
+  // get last result
+  const lastMatch=GM.filter(m=>results[m.id]).slice(-1)[0];
+  if(!lastMatch){ toast('⚠️ No results set yet'); return; }
+  const lastResult=results[lastMatch.id];
+  let i=0;
+  const sendNext=()=>{
+    if(i>=withMobile.length) return;
+    const p=withMobile[i++];
+    const pred=p.preds?.[lastMatch.id];
+    const correct=pred&&pred===lastResult;
+    const wrong=pred&&pred!==lastResult;
+    const gc=GM.filter(m=>results[m.id]&&p.preds?.[m.id]===results[m.id]).length;
+    const kc=Object.keys(p.koPreds||{}).filter(k=>kor[k]&&p.koPreds[k]===kor[k]).length;
+    const pts=(gc+kc)*3;
+    const msg=[
+      `Hi ${p.name}! ⚽ *Appiah Family WC 2026 — Result in!*`,
+      ``,
+      `*${lastMatch.t1} vs ${lastMatch.t2}*`,
+      `Result: *${lastResult==='draw'?'Draw':lastResult+' win'}*`,
+      ``,
+      pred
+        ?(correct
+          ?`✅ *You got it right!* You picked ${pred} — *+3 points!* 🎉`
+          :`❌ You picked ${pred} — unlucky this time!`)
+        :`You didn't predict this one.`,
+      ``,
+      `Your total: *${pts} points* (${gc+kc} correct) 🏆`,
+    ].join('\n');
+    window.open(`https://wa.me/${p.mobile}?text=${encodeURIComponent(msg)}`,'_blank');
+    if(i<withMobile.length){
+      setTimeout(()=>{
+        if(confirm(`Sent to ${p.name}. Open WhatsApp for ${withMobile[i].name} next?`)) sendNext();
+      },1500);
+    } else {
+      toast(`✅ All ${withMobile.length} WhatsApp messages opened!`);
+    }
+  };
+  sendNext();
+}
+
+// ── GROUP WA — Result ─────────────────────────────────────────────────────
+async function waGroupResult(){
+  const [players,results,kor]=await Promise.all([getAllPlayers(),getResults(),getKOR()]);
+  const latest=GM.filter(m=>results[m.id]).slice(-3).reverse();
+  let msg='⚽ *Appiah Family WC 2026 — Latest Results*\n\n';
+  latest.forEach(m=>{
+    const r=results[m.id];
+    msg+=`${m.t1} vs ${m.t2}: *${r==='draw'?'Draw':r+' win'}*\n`;
+  });
+  // mini leaderboard
+  const scored=players.map(p=>{
+    const gc=GM.filter(m=>results[m.id]&&p.preds?.[m.id]===results[m.id]).length;
+    const kc=Object.keys(p.koPreds||{}).filter(k=>kor[k]&&p.koPreds[k]===kor[k]).length;
+    return{...p,pts:(gc+kc)*3};
+  }).sort((a,b)=>b.pts-a.pts).slice(0,3);
+  msg+='\n🏆 *Top 3:*\n';
+  scored.forEach((p,i)=>{ msg+=`${i===0?'🥇':i===1?'🥈':'🥉'} ${p.name} — ${p.pts} pts\n`; });
+  msg+='\nCheck the full leaderboard on the app! ⚽';
+  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+// keep old name as alias
+async function shareResultWhatsApp(){ waGroupResult(); }
+
+// Auto-send after result is set (if EmailJS configured)
+async function maybeAutoNotify(matchId){
+  const cfg=getEJSConfig();
+  if(!cfg.service||!cfg.template||!cfg.publicKey) return;
+  const m=GM.find(x=>x.id===matchId);
+  if(!m) return;
+  const results=await getResults();
+  const r=results[matchId];
+  if(!r) return;
+  const players=await getAllPlayers();
+  const withEmail=players.filter(p=>p.email);
+  if(!withEmail.length) return;
+  emailjs.init(cfg.publicKey);
+  for(const p of withEmail){
+    const pred=p.preds?.[matchId];
+    const correct=pred&&pred===r;
+    const msg=[
+      `Hi ${p.name}! Result just in ⚽`,
+      ``,
+      `${m.t1} vs ${m.t2}: *${r==='draw'?'Draw':r+' win'}*`,
+      ``,
+      pred
+        ? (correct?`✅ You got it right! +3 points for you! 🎉`:`❌ You picked ${pred} — unlucky this time!`)
+        : `You didn't predict this one.`,
+      ``,
+      `Open the app to see the updated leaderboard 🏆`,
+    ].join('\n');
+    try{
+      await emailjs.send(cfg.service,cfg.template,{
+        to_email:p.email,to_name:p.name,
+        subject:`⚽ Result: ${m.t1} vs ${m.t2} — Appiah Family WC 2026`,
+        message:msg.replace(/\n/g,'<br>'),
+      });
+    } catch(e){ console.warn('Auto-notify failed for',p.name,e); }
+  }
+  // Auto-open WA for players with mobile (non-blocking, just log)
+  const withMobile=allP.filter(p=>p.mobile);
+  if(withMobile.length){
+    console.log(`${withMobile.length} players have WhatsApp — use the Notify tab to send personalised WA messages.`);
+  }
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ROUND & LOCK SYSTEM
+// ═══════════════════════════════════════════════════════════════════════════
+
+// Round keys stored in localStorage:
+//   "afwc:round:group"   → "open" | "closed"
+//   "afwc:round:r32"     → "open" | "closed" | "pending"
+//   "afwc:round:r16"     → ...
+//   "afwc:round:qf"      → ...
+//   "afwc:round:sf"      → ...
+//   "afwc:round:final"   → ...
+// Player lock keys:
+//   "afwc:player:NAME".groupLocked  = true/false
+//   "afwc:player:NAME".koLocks = { r32: true, r16: true, ... }
+
+const ROUNDS = [
+  { id:'group', label:'Group Stage',        icon:'📋', dates:'11–27 Jun',  koStage:null },
+  { id:'r32',   label:'Round of 32',        icon:'⚔️',  dates:'28 Jun–3 Jul', koStage:0 },
+  { id:'r16',   label:'Round of 16',        icon:'⚡',  dates:'4–7 Jul',    koStage:1 },
+  { id:'qf',    label:'Quarter-finals',     icon:'🔥',  dates:'9–11 Jul',   koStage:2 },
+  { id:'sf',    label:'Semi-finals',        icon:'🌟',  dates:'14–15 Jul',  koStage:3 },
+  { id:'final', label:'Final & 3rd Place',  icon:'🏆',  dates:'18–19 Jul',  koStage:4 },
+];
+
+function getRoundStatus(id){ return lsGet('round:'+id)||'pending'; }
+function setRoundStatus(id,status){ lsSet('round:'+id,status); }
+
+// ── ADMIN: Rounds Panel ───────────────────────────────────────────────────
+async function loadRoundsPanel(){
+  const el = document.getElementById('roundsControlContent');
+  if(!el) return;
+  const players = await getAllPlayers();
+  let html = '';
+
+  ROUNDS.forEach(r => {
+    const status = getRoundStatus(r.id);
+    const lockedCount = r.id==='group'
+      ? players.filter(p=>p.groupLocked).length
+      : players.filter(p=>p.koLocks&&p.koLocks[r.id]).length;
+
+    const statusLabel = status==='open' ? '🟢 OPEN' : status==='closed' ? '🔴 CLOSED' : '⏳ PENDING';
+    const statusColor = status==='open'?'#14532d':status==='closed'?'#b91c1c':'#92400e';
+    const statusBg    = status==='open'?'#dcfce7':status==='closed'?'#fee2e2':'#fef3c7';
+
+    html += `<div class="round-ctrl">
+      <h4>
+        ${r.icon} ${r.label}
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:${statusBg};color:${statusColor};margin-left:4px">${statusLabel}</span>
+      </h4>
+      <p style="font-size:12px;color:var(--muted);font-weight:600;margin-bottom:10px">${r.dates} · ${lockedCount}/${players.length} players locked in</p>
+      <div class="round-ctrl-btns">
+        ${status!=='open'?`<button class="rc-btn open-round" onclick="adminOpenRound('${r.id}')">🔓 Open for predictions</button>`:''}
+        ${status==='open'?`<button class="rc-btn close-round" onclick="adminCloseRound('${r.id}')">🔒 Close predictions</button>`:''}
+        ${status==='open'?`<button class="rc-btn" onclick="notifyRoundOpen('${r.id}')">📧 Re-notify players</button>`:''}
+      </div>
+    </div>`;
+  });
+
+  el.innerHTML = html || '<div class="empty">No rounds configured.</div>';
+}
+
+async function adminOpenRound(id){
+  setRoundStatus(id,'open');
+  toast('✅ Round opened — players can now predict!');
+  loadRoundsPanel();
+  // Send notification emails
+  await notifyRoundOpen(id);
+}
+
+function adminCloseRound(id){
+  setRoundStatus(id,'closed');
+  toast('🔒 Round closed — predictions locked!');
+  loadRoundsPanel();
+}
+
+async function notifyRoundOpen(id){
+  const round = ROUNDS.find(r=>r.id===id);
+  if(!round) return;
+  const cfg = getEJSConfig();
+  if(!cfg.service||!cfg.template||!cfg.publicKey){ toast('⚠️ Configure EmailJS in Notify tab to send emails'); return; }
+  emailjs.init(cfg.publicKey);
+  const players = await getAllPlayers();
+  const withEmail = players.filter(p=>p.email);
+  if(!withEmail.length){ toast('ℹ️ No email addresses on file'); return; }
+  let sent=0;
+  for(const p of withEmail){
+    const msg = [
+      `Hi ${p.name}! 🏆`,
+      ``,
+      `The ${round.label} (${round.dates}) is now OPEN for predictions on the Appiah Family World Cup 2026 competition!`,
+      ``,
+      `Open the app now to make your picks before the matches start. Once you're happy with all your predictions, tap the LOCK button to lock them in.`,
+      ``,
+      `Good luck! ⚽`,
+    ].join('\n');
+    try{
+      await emailjs.send(cfg.service,cfg.template,{
+        to_email:p.email, to_name:p.name,
+        subject:`⚡ ${round.icon} ${round.label} predictions are now open! — Appiah Family WC 2026`,
+        message: msg.replace(/\n/g,'<br>'),
+      });
+      sent++;
+    } catch(e){ console.warn('notify failed',p.name,e); }
+  }
+  const withMobile=(await getAllPlayers()).filter(p=>p.mobile).length;
+  toast(`📧 Emailed ${sent} · 💬 ${withMobile} have WhatsApp — use Notify tab to send WA too!`);
+}
+
+// ── PLAYER: Lock Bar ──────────────────────────────────────────────────────
+async function renderLockBar(){
+  const el = document.getElementById('pLockBar');
+  if(!el||!currentPlayer) return;
+  const sd = await loadPlayer(currentPlayer);
+  if(!sd) return;
+  const roundStatus = getRoundStatus('group');
+  const locked = !!sd.groupLocked;
+  const totalPreds = Object.keys(sd.preds||{}).length;
+
+  if(roundStatus==='pending'){
+    el.innerHTML=`<div class="lock-bar unlocked">
+      <div class="licon">⏳</div>
+      <div><div class="ltitle">Group stage predictions</div>
+      <div class="lsub">Waiting for admin to open predictions</div></div>
+    </div>`;
+    return;
+  }
+
+  if(locked){
+    el.innerHTML=`<div class="lock-bar locked">
+      <div class="licon">🔒</div>
+      <div>
+        <div class="ltitle">Your predictions are locked in!</div>
+        <div class="lsub">${totalPreds} predictions submitted · Good luck! ⚽</div>
+      </div>
+    </div>`;
+    return;
+  }
+
+  el.innerHTML=`<div class="lock-bar unlocked">
+    <div class="licon">✏️</div>
+    <div>
+      <div class="ltitle">Make your predictions below</div>
+      <div class="lsub">${totalPreds}/72 predicted · Lock when you're ready</div>
+    </div>
+  </div>
+  <button class="btn-lock do-lock" onclick="showLockConfirm()" ${roundStatus!=='open'?'disabled style="opacity:.5;cursor:not-allowed"':''}>
+    🔒 Submit & Lock my predictions
+  </button>`;
+}
+
+function showLockConfirm(){
+  const el=document.getElementById('lockConfirmOverlay');
+  if(el) el.classList.add('open');
+}
+
+async function confirmLock(){
+  const ov=document.getElementById('lockConfirmOverlay'); if(ov) ov.classList.remove('open');
+  const sd = await loadPlayer(currentPlayer);
+  if(!sd) return;
+  sd.groupLocked = true;
+  await savePlayer(sd);
+  toast('🔒 Predictions locked in! Good luck! ⚽');
+  renderLockBar();
+  // notify admin via email that this player has locked
+  const cfg = getEJSConfig();
+  if(cfg.service&&cfg.template&&cfg.publicKey){
+    // silent — no await, fire and forget
+    emailjs.init(cfg.publicKey);
+    emailjs.send(cfg.service,cfg.template,{
+      to_email:'admin@appiah-family.com', to_name:'Admin',
+      subject:`🔒 ${sd.name} has locked their predictions`,
+      message:`${sd.name} has submitted and locked their group stage predictions on the Appiah Family WC 2026 app.`,
+    }).catch(()=>{});
+  }
+}
+
+// ── PLAYER: KO Round Banner ───────────────────────────────────────────────
+async function renderKORoundBanner(){
+  const el = document.getElementById('pKORoundBanner');
+  if(!el) return;
+  const sd = await loadPlayer(currentPlayer);
+
+  let bannerHtml = '';
+  KOS.forEach((stage, si) => {
+    const roundIds = ['r32','r16','qf','sf','final'];
+    // map KOS index to round (0=r32,1=r16,2=qf,3=sf,4=final/3rd)
+    // KOS has 6 stages: 0=r32,1=r16,2=qf,3=sf,4=3rd,5=final → combine 4+5 into 'final'
+    const roundMap = ['r32','r16','qf','sf','final','final'];
+    const rid = roundMap[si];
+    const status = getRoundStatus(rid);
+    const locked = sd?.koLocks?.[rid];
+
+    if(status==='open'&&!locked){
+      bannerHtml += `<div class="round-banner">
+        <div class="ricon">${stage.icon}</div>
+        <div>
+          <div class="rtitle">${stage.stage} is OPEN!</div>
+          <div class="rsub">Make your predictions now · ${stage.matches.length} matches</div>
+        </div>
+        <span class="rbadge rbadge-open">OPEN</span>
+      </div>`;
+    }
+  });
+
+  if(!bannerHtml){
+    bannerHtml = `<div class="info-box">⚡ Team names appear here as each knockout round opens. You'll get a notification when you can start predicting!</div>`;
+  }
+  el.innerHTML = bannerHtml;
+}
+
+// Lock KO round predictions
+async function lockKORound(rid){
+  const sd = await loadPlayer(currentPlayer);
+  if(!sd) return;
+  sd.koLocks = sd.koLocks||{};
+  sd.koLocks[rid] = true;
+  await savePlayer(sd);
+  toast('🔒 '+rid.toUpperCase()+' predictions locked!');
+  renderSKO();
+  renderKORoundBanner();
+}
+
+// Check on login if a new round just opened (show popup)
+function checkNewRoundNotification(){
+  ROUNDS.forEach(r=>{
+    if(r.id==='group') return;
+    const status = getRoundStatus(r.id);
+    if(status!=='open') return;
+    const seenKey = 'seen_open_'+r.id+'_'+currentPlayer;
+    if(lsGet(seenKey)) return;
+    lsSet(seenKey, true);
+    // Show popup
+    document.getElementById('roundOpenTitle').textContent = `${r.icon} ${r.label} is open!`;
+    document.getElementById('roundOpenMsg').textContent =
+      `The ${r.label} (${r.dates}) is now open for predictions. Tap below to make your picks before the matches start!`;
+    const rs=document.getElementById('roundOpenSheet'); if(rs) rs.classList.add('open');
+  });
+}
+
+// doPred patch removed — selectPred/savePred handles all prediction logic
+
+// ── PATCH: doKOPred — block if locked ────────────────────────────────────
+// doKOPred duplicate removed
+
+// ── PATCH: renderSKO — add per-round lock buttons ────────────────────────
+async function renderSKO(){
+  if(!currentPlayer) return;
+  const [sd,kor,kot] = await Promise.all([loadPlayer(currentPlayer),getKOR(),getKOT()]);
+  if(!sd) return;
+  const list = document.getElementById('pKOList');
+  list.innerHTML = '';
+  const roundMap = {0:'r32',1:'r16',2:'qf',3:'sf',4:'final',5:'final'};
+
+  renderKORoundBanner();
+
+  KOS.forEach((stage,si) => {
+    const rid = roundMap[si];
+    const roundStatus = getRoundStatus(rid);
+    const koLocked = sd.koLocks&&sd.koLocks[rid];
+
+    // Stage header
+    const hdr = document.createElement('div');
+    hdr.className = 'ko-stage-hdr';
+    hdr.innerHTML = `${stage.icon} ${stage.stage}
+      <span class="rbadge ${roundStatus==='open'?'rbadge-open':roundStatus==='closed'?'rbadge-locked':'rbadge-closed'}" style="font-size:10px;padding:2px 8px;border-radius:8px;font-family:var(--FB)">
+        ${roundStatus==='open'?'OPEN':roundStatus==='closed'?'CLOSED':'PENDING'}
+      </span>`;
+    list.appendChild(hdr);
+
+    if(roundStatus==='pending'){
+      const pending = document.createElement('div');
+      pending.style.cssText='padding:12px 16px;font-size:13px;color:var(--muted);font-weight:600;margin-bottom:8px';
+      pending.textContent='⏳ This round will open when the admin unlocks it.';
+      list.appendChild(pending);
+      return;
+    }
+
+    stage.matches.forEach(m => {
+      const teams = kot[m.id]||{};
+      const t1=teams.t1||'', t2=teams.t2||'';
+      const pred = sd.koPreds?.[m.id];
+      const res = kor[m.id];
+      const correct = res&&pred&&pred===res;
+      const wrong = res&&pred&&pred!==res;
+
+      const card = document.createElement('div');
+      card.className = 'match-card'+(pred&&!res?' predicted':'')+(correct?' correct':'')+(wrong?' wrong':'');
+      card.id = 'pko-'+m.id;
+
+      let chip='';
+      if(correct)                    chip='<span class="chip cc">✅ Correct!</span>';
+      else if(wrong)                 chip='<span class="chip cw">❌ Wrong</span>';
+      else if(sd.lockedPreds?.[m.id])chip='<span class="locked-badge">🔒 Locked</span>';
+      else if(pendingPreds['ko_'+m.id]!==undefined) chip='<span class="chip" style="background:#fef3c7;color:#92400e">⏳ Unsaved</span>';
+      else if(pred&&!res)            chip='<span class="chip" style="background:#dbeafe;color:#1e40af">💾 Saved</span>';
+      if(koLocked&&!pred&&!res) chip='<span class="chip" style="background:#fee2e2;color:#991b1b">Missed</span>';
+
+      let body='';
+      if(!res&&!koLocked&&roundStatus==='open'){
+        const s1=pred===t1&&t1?'sel':'', sd2=pred==='draw'?'sel':'', s2=pred===t2&&t2?'sel':'';
+        body=`<div class="ko-pair">
+          <input class="ko-inp" value="${t1}" placeholder="${m.h1}" disabled>
+          <div class="vsbadge">VS</div>
+          <input class="ko-inp" value="${t2}" placeholder="${m.h2}" disabled>
+        </div>
+        <div class="pred-area"><div class="pred-lbl">✏ My prediction</div>
+          <div class="pred-btns">
+            <button class="pb ${s1}" onclick="doKOPred('${m.id}','t1')">${t1||m.h1}</button>
+            <button class="pb dr ${sd2}" onclick="doKOPred('${m.id}','draw')">Draw</button>
+            <button class="pb ${s2}" onclick="doKOPred('${m.id}','t2')">${t2||m.h2}</button>
+          </div></div>`;
+      } else if(res){
+        const icon=correct?'✅':wrong?'❌':'—';
+        const cls=correct?'rc':wrong?'rw2':'';
+        const pts=correct?'<span class="ptsbadge">+3 pts</span>':'';
+        body=`<div style="font-weight:800;font-size:14px;margin-bottom:6px">${t1||m.h1} vs ${t2||m.h2}</div>
+          <div class="rrow ${cls}">${icon} ${pred?`Picked: <strong>${pred}</strong> · `:''}Result: <strong>${res}</strong>${pts}</div>`;
+      } else {
+        body=`<div style="font-size:13px;color:var(--muted);font-weight:600">
+          ${koLocked?'🔒 This round is locked in.':'⏳ Waiting for round to open.'}
+        </div>`;
+      }
+
+      card.innerHTML=`
+        <div class="match-top">
+          <span class="mnum">${m.id}</span>
+          <span class="mdate">${m.d}</span>
+          ${chip}
+        </div>
+        <div class="match-body">${body}</div>`;
+      list.appendChild(card);
+    });
+
+    // Per-round lock button
+    if(roundStatus==='open'&&!koLocked){
+      const lockBtn = document.createElement('button');
+      lockBtn.className='btn-lock do-lock';
+      lockBtn.style.cssText='margin-bottom:16px';
+      lockBtn.innerHTML='🔒 Lock my '+stage.stage+' predictions';
+      lockBtn.onclick = ()=>lockKORound(rid);
+      list.appendChild(lockBtn);
+    } else if(koLocked){
+      const lockedMsg = document.createElement('div');
+      lockedMsg.className='lock-bar locked';
+      lockedMsg.style.cssText='margin-bottom:12px';
+      lockedMsg.innerHTML=`<div class="licon">🔒</div><div><div class="ltitle">Locked in!</div><div class="lsub">Your ${stage.stage} predictions are submitted</div></div>`;
+      list.appendChild(lockedMsg);
+    }
+  });
+}
+
+// ── PATCH: doPlayerLogin — check for new rounds on login ─────────────────
+// Hook into existing doPlayerLogin after render calls
+const _afterPlayerLogin = async () => {
+  await renderLockBar();
+  checkNewRoundNotification();
+};
+
+// ── PATCH: loadPlayers — show lock status ────────────────────────────────
+const _origLoadPlayers = loadPlayers;
+async function loadPlayers(){
+  const el=document.getElementById('playersContent');
+  el.innerHTML='<div class="loading"></div>';
+  const [players,results,kor]=await Promise.all([getAllPlayers(),getResults(),getKOR()]);
+  if(!players.length){ el.innerHTML='<div class="empty">No players yet.</div>'; return; }
+  const scored=players.map(p=>{
+    const gc=GM.filter(m=>results[m.id]&&p.preds?.[m.id]===results[m.id]).length;
+    const kc=Object.keys(p.koPreds||{}).filter(k=>kor[k]&&p.koPreds[k]===kor[k]).length;
+    return{...p,pts:(gc+kc)*3,correct:gc+kc};
+  }).sort((a,b)=>b.pts-a.pts);
+  el.innerHTML=scored.map(p=>{
+    const groupStatus = p.groupLocked?'lc-locked':'lc-open';
+    const groupLabel  = p.groupLocked?'🔒 Locked':'✏️ Editing';
+    return `<div class="match-card" onclick="showPlayerDetail('${p.name.replace(/'/g,"\'")}')">
+      <div class="match-top">
+        <span class="mdate" style="font-size:14px;font-weight:800">${p.name}</span>
+        <span class="lock-chip ${groupStatus}">${groupLabel}</span>
+        <span class="chip cd">${p.pts} pts</span>
+      </div>
+      <div class="match-body" style="padding-bottom:10px">
+        <div style="display:flex;gap:16px;font-size:13px;color:var(--muted);font-weight:700">
+          <span>📋 ${Object.keys(p.preds||{}).length+Object.keys(p.koPreds||{}).length} predictions</span>
+          <span>✅ ${p.correct} correct</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+
+// Init — open group stage by default so players can predict immediately
+if(!lsGet('round:group')) lsSet('round:group','open');
+goSplash();
+</script>
+</body>
+</html>
