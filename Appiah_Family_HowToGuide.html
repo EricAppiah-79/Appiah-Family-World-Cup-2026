@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚽ Appiah Family WC2026 — How to Play</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:#0a0a0a;
+  --ink2:#3a3a3a;
+  --muted:#888;
+  --border:#e8e8e8;
+  --white:#ffffff;
+  --bg:#f7f7f5;
+  --green:#00875a;
+  --ltgreen:#e6f4ee;
+  --gold:#f5a623;
+  --ltgold:#fef8ec;
+  --blue:#1a56db;
+  --ltblue:#eff4ff;
+  --red:#dc2626;
+  --ltred:#fef2f2;
+  --purple:#7c3aed;
+  --ltpurple:#f5f3ff;
+  --FS:'Syne',sans-serif;
+  --FB:'Plus Jakarta Sans',sans-serif;
+}
+
+body{
+  font-family:var(--FB);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  min-height:100vh;
+}
+
+/* ── HERO ── */
+.hero{
+  background:var(--ink);
+  padding:48px 24px 56px;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+.hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,135,90,.35),transparent 70%),
+    radial-gradient(ellipse 50% 40% at 100% 100%,rgba(245,166,35,.15),transparent 60%);
+}
+.hero-ball{
+  font-size:64px;
+  display:block;
+  margin-bottom:16px;
+  position:relative;
+  animation:spin 8s linear infinite;
+}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.hero h1{
+  font-family:var(--FS);
+  font-size:clamp(28px,8vw,40px);
+  color:#fff;
+  letter-spacing:-0.5px;
+  line-height:1.1;
+  position:relative;
+  margin-bottom:8px;
+}
+.hero h1 span{color:var(--gold)}
+.hero p{
+  font-size:15px;
+  color:rgba(255,255,255,.6);
+  font-weight:500;
+  position:relative;
+  max-width:320px;
+  margin:0 auto;
+}
+.hero-chips{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  margin-top:20px;
+  position:relative;
+  flex-wrap:wrap;
+}
+.hero-chip{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.8);
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.5px;
+}
+
+/* ── CONTENT ── */
+.content{max-width:480px;margin:0 auto;padding:0 16px 48px;}
+
+/* ── SECTION HEADER ── */
+.section-intro{
+  text-align:center;
+  padding:32px 0 24px;
+}
+.section-intro .overline{
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+.section-intro h2{
+  font-family:var(--FS);
+  font-size:26px;
+  color:var(--ink);
+  line-height:1.2;
+}
+.section-intro h2 span{color:var(--green)}
+
+/* ── STEP CARDS ── */
+.steps{display:flex;flex-direction:column;gap:14px;margin-bottom:32px;}
+
+.step{
+  background:var(--white);
+  border-radius:18px;
+  border:1.5px solid var(--border);
+  overflow:hidden;
+  transition:transform .2s;
+}
+.step:active{transform:scale(.99)}
+
+.step-header{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:16px 18px;
+}
+.step-num{
+  flex-shrink:0;
+  width:36px;height:36px;
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--FS);
+  font-size:18px;
+  font-weight:800;
+}
+.step-num.green{background:var(--ltgreen);color:var(--green)}
+.step-num.gold{background:var(--ltgold);color:#b45309}
+.step-num.blue{background:var(--ltblue);color:var(--blue)}
+.step-num.red{background:var(--ltred);color:var(--red)}
+.step-num.purple{background:var(--ltpurple);color:var(--purple)}
+.step-num.ink{background:#f0f0f0;color:var(--ink)}
+
+.step-title{
+  font-weight:800;
+  font-size:15px;
+  color:var(--ink);
+  line-height:1.3;
+}
+.step-subtitle{
+  font-size:12px;
+  color:var(--muted);
+  font-weight:500;
+  margin-top:1px;
+}
+
+.step-body{
+  padding:0 18px 18px;
+  padding-top:0;
+}
+.step-body p{
+  font-size:14px;
+  color:var(--ink2);
+  font-weight:500;
+  line-height:1.6;
+  margin-bottom:10px;
+}
+.step-body p:last-child{margin-bottom:0}
+
+/* Mock phone UI elements */
+.mock{
+  background:var(--bg);
+  border-radius:12px;
+  padding:14px 16px;
+  margin-top:4px;
+  border:1px solid var(--border);
+}
+.mock-label{
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+
+/* Team buttons mock */
+.mock-teams{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:8px;
+  align-items:center;
+  margin-bottom:8px;
+}
+.mock-team-btn{
+  padding:10px 8px;
+  border-radius:9px;
+  border:2px solid var(--border);
+  background:#fff;
+  font-size:12px;
+  font-weight:800;
+  text-align:center;
+  color:var(--ink);
+}
+.mock-team-btn.selected{
+  background:var(--green);
+  border-color:var(--green);
+  color:#fff;
+}
+.mock-team-btn.pending{
+  background:rgba(0,135,90,.08);
+  border-color:var(--green);
+  color:var(--green);
+}
+.mock-vs{
+  font-family:var(--FS);
+  font-size:13px;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* Action buttons mock */
+.mock-btn{
+  width:100%;
+  padding:11px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:800;
+  text-align:center;
+  margin-top:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+}
+.mock-btn.save{background:var(--ltgreen);color:var(--green);border:1.5px solid rgba(0,135,90,.2)}
+.mock-btn.lock{background:var(--ltpurple);color:var(--purple);border:1.5px solid rgba(124,58,237,.2)}
+.mock-btn.locked{background:#f5f3ff;color:var(--purple);border:1.5px solid var(--purple)}
+.mock-btn.submit{background:var(--red);color:#fff}
+
+/* Status chips */
+.chip{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 10px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.3px;
+}
+.chip.unsaved{background:#fef3c7;color:#92400e}
+.chip.saved{background:#dbeafe;color:#1e40af}
+.chip.locked{background:var(--ltpurple);color:var(--purple)}
+.chip.correct{background:#dcfce7;color:#14532d}
+.chip.wrong{background:#fee2e2;color:#991b1b}
+.chip.predict{background:#f3f4f6;color:#6b7280}
+
+/* Locked display */
+.locked-disp{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;
+  background:var(--ltpurple);
+  border-radius:9px;
+  border:1px solid rgba(124,58,237,.15);
+  margin-top:6px;
+}
+.locked-disp .team{font-weight:800;font-size:15px;color:var(--purple)}
+.locked-disp .label{font-size:12px;color:var(--purple);font-weight:600;margin-left:auto;opacity:.8}
+
+/* Points pill */
+.pts-pill{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--ltgold);
+  color:#b45309;
+  border:1.5px solid rgba(245,166,35,.3);
+  padding:4px 12px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:800;
+}
+
+/* ── DIVIDER ── */
+.divider{
+  height:1px;
+  background:var(--border);
+  margin:8px 0 28px;
+}
+
+/* ── POINTS TABLE ── */
+.pts-table{
+  background:var(--white);
+  border-radius:16px;
+  border:1.5px solid var(--border);
+  overflow:hidden;
+  margin-bottom:28px;
+}
+.pts-table-hdr{
+  background:var(--ink);
+  color:#fff;
+  padding:12px 18px;
+  font-family:var(--FS);
+  font-size:15px;
+  letter-spacing:.5px;
+}
+.pts-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  padding:13px 18px;
+  border-bottom:1px solid var(--border);
+  gap:8px;
+}
+.pts-row:last-child{border-bottom:none}
+.pts-row .desc{font-size:14px;font-weight:600;color:var(--ink2)}
+.pts-row .pts{font-family:var(--FS);font-size:18px;font-weight:800}
+.pts-row.win .pts{color:var(--green)}
+.pts-row.zero .pts{color:var(--muted)}
+
+/* ── FAQ ── */
+.faq{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.faq-item{
+  background:var(--white);
+  border-radius:14px;
+  border:1.5px solid var(--border);
+  padding:16px 18px;
+}
+.faq-q{
+  font-weight:800;
+  font-size:14px;
+  color:var(--ink);
+  margin-bottom:6px;
+  display:flex;align-items:flex-start;gap:8px;
+}
+.faq-q::before{
+  content:'Q';
+  flex-shrink:0;
+  width:22px;height:22px;
+  background:var(--ltgold);
+  color:#b45309;
+  border-radius:6px;
+  font-size:11px;
+  font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  margin-top:1px;
+}
+.faq-a{
+  font-size:13px;
+  color:var(--ink2);
+  font-weight:500;
+  line-height:1.6;
+  padding-left:30px;
+}
+
+/* ── TOURNAMENT TABLE ── */
+.tourney-table{
+  background:var(--white);
+  border-radius:16px;
+  border:1.5px solid var(--border);
+  overflow:hidden;
+  margin-bottom:28px;
+}
+.tourney-row{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  padding:11px 18px;
+  border-bottom:1px solid var(--border);
+  gap:10px;
+}
+.tourney-row:last-child{border-bottom:none}
+.tourney-row.highlight{background:linear-gradient(90deg,var(--ltgreen),#fff)}
+.tourney-icon{font-size:18px}
+.tourney-name{font-size:13px;font-weight:700;color:var(--ink)}
+.tourney-dates{font-size:11px;color:var(--muted);font-weight:600;text-align:right}
+
+/* ── FLOW DIAGRAM ── */
+.flow{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  margin:12px 0;
+}
+.flow-step{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:10px 0;
+  position:relative;
+}
+.flow-step:not(:last-child)::after{
+  content:'';
+  position:absolute;
+  left:14px;
+  top:38px;
+  bottom:-10px;
+  width:2px;
+  background:var(--border);
+  border-radius:2px;
+}
+.flow-dot{
+  flex-shrink:0;
+  width:28px;height:28px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;
+  z-index:1;
+}
+.flow-dot.g{background:var(--ltgreen)}
+.flow-dot.b{background:var(--ltblue)}
+.flow-dot.p{background:var(--ltpurple)}
+.flow-dot.o{background:var(--ltgold)}
+.flow-text{
+  padding-top:3px;
+}
+.flow-title{font-size:14px;font-weight:800;color:var(--ink);line-height:1.3}
+.flow-sub{font-size:12px;color:var(--muted);font-weight:500;margin-top:2px}
+
+/* ── TIP BOX ── */
+.tip{
+  background:linear-gradient(135deg,var(--ltgold),#fffef0);
+  border:1.5px solid rgba(245,166,35,.3);
+  border-radius:14px;
+  padding:14px 16px;
+  margin-bottom:14px;
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:13px;
+  font-weight:600;
+  color:#6b3c00;
+  line-height:1.5;
+}
+.tip-icon{font-size:20px;flex-shrink:0;margin-top:-1px}
+
+/* ── FOOTER ── */
+.footer{
+  background:var(--ink);
+  padding:32px 24px;
+  text-align:center;
+  color:rgba(255,255,255,.5);
+  font-size:13px;
+  font-weight:500;
+}
+.footer strong{color:var(--gold);display:block;font-family:var(--FS);font-size:20px;margin-bottom:6px}
+
+/* ── APP SWITCHER ── */
+.app-switcher{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:28px;
+}
+.app-card{
+  border-radius:16px;
+  padding:18px 16px;
+  text-align:center;
+  border:1.5px solid var(--border);
+}
+.app-card.appiah{
+  background:linear-gradient(135deg,#0e0800,#2a0a00);
+  border-color:rgba(255,215,0,.2);
+}
+.app-card.batch{
+  background:linear-gradient(135deg,#0a0f1e,#071530);
+  border-color:rgba(0,212,255,.2);
+}
+.app-card .icon{font-size:28px;margin-bottom:8px;display:block}
+.app-card .name{font-family:var(--FS);font-size:14px;color:#fff;letter-spacing:1px;line-height:1.2}
+.app-card .pass{font-size:11px;color:rgba(255,255,255,.5);margin-top:6px;font-weight:600}
+.app-card .pass strong{color:var(--gold);font-weight:800}
+
+/* ── PROGRESS BAR MOCK ── */
+.prog-mock{
+  background:rgba(0,0,0,.08);
+  border-radius:4px;
+  height:6px;
+  margin:6px 0 2px;
+  overflow:hidden;
+}
+.prog-mock-fill{
+  height:100%;
+  border-radius:4px;
+  background:linear-gradient(90deg,var(--green),#22c55e);
+}
+
+/* animations */
+.step{animation:fadeUp .4s ease both}
+.step:nth-child(2){animation-delay:.05s}
+.step:nth-child(3){animation-delay:.1s}
+.step:nth-child(4){animation-delay:.15s}
+.step:nth-child(5){animation-delay:.2s}
+.step:nth-child(6){animation-delay:.25s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-ball">⚽</span>
+  <h1>Appiah Family<br><span>Prediction Guide</span></h1>
+  <p>Your guide to the Appiah Family World Cup 2026 Prediction Competition!</p>
+  <div class="hero-chips">
+    <span class="hero-chip">🏆 Appiah Family Competition</span>
+    <span class="hero-chip">⚽ World Cup 2026</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- APPIAH WELCOME -->
+  <div class="section-intro">
+    <div class="overline">Welcome</div>
+    <h2>Your <span>competition</span></h2>
+  </div>
+  <div style="background:linear-gradient(135deg,#0e0800,#2a0a00);border-radius:18px;padding:24px 20px;margin-bottom:28px;text-align:center;border:1.5px solid rgba(255,215,0,.2)">
+    <div style="font-size:48px;margin-bottom:12px">🏆</div>
+    <div style="font-family:var(--FS);font-size:24px;color:#ffd700;letter-spacing:1px;margin-bottom:6px">Appiah Family</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.6);font-weight:600;margin-bottom:16px">World Cup 2026 Prediction Competition</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="background:rgba(255,255,255,.08);border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:13px;color:rgba(255,255,255,.7);font-weight:600">Your role</span>
+        <span style="font-size:13px;color:#ffd700;font-weight:800">🎽 Player — just enter your name</span>
+      </div>
+      <div style="background:rgba(255,255,255,.08);border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:13px;color:rgba(255,255,255,.7);font-weight:600">Total matches</span>
+        <span style="font-size:13px;color:#ffd700;font-weight:800">104 matches to predict</span>
+      </div>
+      <div style="background:rgba(255,255,255,.08);border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:13px;color:rgba(255,255,255,.7);font-weight:600">Points per correct pick</span>
+        <span style="font-size:13px;color:#ffd700;font-weight:800">+3 points</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW TO JOIN -->
+  <div class="section-intro">
+    <div class="overline">Getting started</div>
+    <h2>How to <span>join</span></h2>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num green">1</div>
+        <div>
+          <div class="step-title">Open the file you were sent</div>
+          <div class="step-subtitle">HTML file via WhatsApp or email</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>You'll receive a file called <strong>Appiah_Family_WC2026.html</strong> or <strong>Bannatyne_Batch_WC2026.html</strong>. Tap it to open — it works in any browser on your phone. No app to download!</p>
+        <div class="tip" style="margin-bottom:0;margin-top:8px">
+          <span class="tip-icon">📌</span>
+          <span>Bookmark it or save it to your home screen so you can come back to it easily after every match.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num green">2</div>
+        <div>
+          <div class="step-title">Tap Player and enter your name</div>
+          <div class="step-subtitle">On the splash screen</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>On the opening screen tap <strong>🎽 Player</strong> (or 💪 Member on Bannatyne). Type your name — use the same name every time so your predictions are saved correctly.</p>
+        <div class="mock">
+          <div class="mock-label">Sign up screen</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="background:#fff;border:2px solid #e8e8e8;border-radius:8px;padding:10px 12px;font-size:13px;font-weight:700;color:#aaa">e.g. Eric Appiah</div>
+            <div style="background:#fff;border:2px solid #e8e8e8;border-radius:8px;padding:10px 12px;font-size:13px;font-weight:700;color:#aaa">your@email.com (optional)</div>
+            <div style="background:#fff;border:2px solid #e8e8e8;border-radius:8px;padding:10px 12px;font-size:13px;font-weight:700;color:#aaa">WhatsApp number (optional)</div>
+            <div style="background:var(--green);color:#fff;border-radius:8px;padding:12px;font-size:13px;font-weight:800;text-align:center">Start Predicting ➜</div>
+          </div>
+        </div>
+        <p style="margin-top:10px">Adding your <strong>email</strong> and <strong>WhatsApp number</strong> means you'll get automatic notifications when results are in and the leaderboard updates!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAKING PREDICTIONS -->
+  <div class="section-intro">
+    <div class="overline">The main event</div>
+    <h2>Making your <span>predictions</span></h2>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num gold">3</div>
+        <div>
+          <div class="step-title">Tap Group Stage</div>
+          <div class="step-subtitle">Find all 72 group matches here</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>Tap <strong>📋 Group Stage</strong> in the bottom tab bar. You'll see all 72 matches listed by date. Use the filter chips at the top to jump to a specific group.</p>
+        <div class="mock">
+          <div class="mock-label">Filter chips</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <span style="background:var(--green);color:#fff;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:800">All</span>
+            <span style="background:#fff;border:1.5px solid var(--border);padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;color:var(--muted)">Grp A</span>
+            <span style="background:#fff;border:1.5px solid var(--border);padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;color:var(--muted)">Grp B</span>
+            <span style="background:#fff;border:1.5px solid var(--border);padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;color:var(--muted)">Grp C</span>
+            <span style="background:#fff;border:1.5px solid var(--border);padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;color:var(--muted)">⏳ To predict</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num gold">4</div>
+        <div>
+          <div class="step-title">Tap your predicted winner</div>
+          <div class="step-subtitle">3 choices — Team 1, Draw, or Team 2</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>For each match, tap the team you think will win — or tap <strong>Draw</strong> if you think the match ends level.</p>
+        <div class="mock">
+          <div class="mock-label">Match card — tap to select</div>
+          <div class="mock-teams">
+            <div class="mock-team-btn pending">England</div>
+            <div class="mock-vs">VS</div>
+            <div class="mock-team-btn">Croatia</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+            <span class="chip unsaved">⏳ Unsaved</span>
+            <span style="font-size:12px;color:var(--muted);font-weight:500">— you've tapped but not saved yet</span>
+          </div>
+        </div>
+        <p>When you tap a team it shows <span class="chip unsaved" style="display:inline-flex">⏳ Unsaved</span> — this means you've made a selection but haven't saved it yet.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num blue">5</div>
+        <div>
+          <div class="step-title">Tap the 💾 Save button</div>
+          <div class="step-subtitle">This writes your prediction to the database</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>After tapping your team, a green Save button appears below. <strong>You must tap this</strong> to actually save your prediction. Until you tap Save, nothing is recorded!</p>
+        <div class="mock">
+          <div class="mock-btn save">💾 Save — <strong>England</strong></div>
+        </div>
+        <p style="margin-top:10px">Once saved, the chip changes to <span class="chip saved" style="display:inline-flex">💾 Saved</span> — you can still change your mind at this point.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num purple">6</div>
+        <div>
+          <div class="step-title">Tap 🔒 Lock to confirm</div>
+          <div class="step-subtitle">This freezes your prediction — no more changes!</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>Once you're happy with your pick, tap the <strong>Lock</strong> button. This permanently locks in your prediction before kick-off. You <strong>cannot change it</strong> after locking.</p>
+        <div class="mock">
+          <div class="mock-btn lock" style="margin-bottom:8px">🔒 Lock in — <strong>England</strong></div>
+          <div class="locked-disp">
+            <span style="font-size:18px">🔒</span>
+            <span class="team">England</span>
+            <span class="label">Locked in</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:8px">
+            <span class="chip locked">🔒 Locked</span>
+            <span style="font-size:12px;color:var(--muted);font-weight:500">— prediction is frozen</span>
+          </div>
+        </div>
+        <div class="tip" style="margin-top:10px;margin-bottom:0">
+          <span class="tip-icon">⚠️</span>
+          <span>Make sure you <strong>lock every prediction</strong> before kick-off. Saved but unlocked predictions may not count!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 STEP SUMMARY -->
+  <div class="section-intro">
+    <div class="overline">Quick reminder</div>
+    <h2>The <span>3-step</span> rule</h2>
+  </div>
+
+  <div style="background:var(--white);border-radius:18px;border:1.5px solid var(--border);padding:20px 18px;margin-bottom:28px">
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-dot g">👆</div>
+        <div class="flow-text">
+          <div class="flow-title">Step 1 — Tap a team</div>
+          <div class="flow-sub">Highlights your pick · shows ⏳ Unsaved</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot b">💾</div>
+        <div class="flow-text">
+          <div class="flow-title">Step 2 — Tap Save</div>
+          <div class="flow-sub">Writes to database · shows 💾 Saved in blue</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot p">🔒</div>
+        <div class="flow-text">
+          <div class="flow-title">Step 3 — Tap Lock</div>
+          <div class="flow-sub">Freezes permanently · shows 🔒 Locked in purple</div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--border);padding-top:12px;margin-top:4px;font-size:13px;color:var(--muted);font-weight:500;text-align:center">
+      Every match — group stage AND knockout rounds — follows these same 3 steps
+    </div>
+  </div>
+
+  <!-- AFTER MATCHES -->
+  <div class="section-intro">
+    <div class="overline">After matches</div>
+    <h2>Seeing your <span>results</span></h2>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num green">7</div>
+        <div>
+          <div class="step-title">Results appear automatically</div>
+          <div class="step-subtitle">Once the admin sets the result</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>After each match, the admin enters the result. Your prediction cards automatically update to show if you were right or wrong.</p>
+        <div class="mock">
+          <div class="mock-label">Result cards</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f0fff4;border-radius:9px;border:1px solid #bbf7d0">
+              <span class="chip correct">✅ Correct!</span>
+              <span style="font-size:13px;font-weight:700;color:#15803d">England win — +3 pts! 🎉</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#fff5f5;border-radius:9px;border:1px solid #fecaca">
+              <span class="chip wrong">❌ Wrong</span>
+              <span style="font-size:13px;font-weight:700;color:#dc2626">You picked Draw · Result: France win</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num gold">8</div>
+        <div>
+          <div class="step-title">Check My Tally for your score</div>
+          <div class="step-subtitle">Tap 🏆 My Tally or My Score tab</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>Tap the <strong>🏆 My Tally</strong> tab to see your total points, how many predictions you got right, and your breakdown by group stage and knockout rounds.</p>
+        <div class="mock">
+          <div class="mock-label">Your score</div>
+          <div style="text-align:center;padding:12px 0 8px">
+            <div style="font-size:48px;font-weight:800;color:var(--gold);font-family:var(--FS);line-height:1">45</div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-top:4px">Total Points</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px">
+            <div style="background:#f9f9f9;border-radius:8px;padding:10px;text-align:center">
+              <div style="font-size:22px;font-weight:800;color:var(--green);font-family:var(--FS)">15</div>
+              <div style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px">Correct</div>
+            </div>
+            <div style="background:#f9f9f9;border-radius:8px;padding:10px;text-align:center">
+              <div style="font-size:22px;font-weight:800;color:var(--green);font-family:var(--FS)">30</div>
+              <div style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px">Group pts</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KNOCKOUT -->
+  <div class="section-intro">
+    <div class="overline">Later in the tournament</div>
+    <h2>Knockout <span>predictions</span></h2>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num blue">9</div>
+        <div>
+          <div class="step-title">Wait for the admin to open each round</div>
+          <div class="step-subtitle">You'll get a notification</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>Once the group stage is done, the admin opens the <strong>Round of 32, Quarter-finals, Semi-finals</strong> and <strong>Final</strong> one at a time. You'll get a notification — then come back to make your picks!</p>
+        <div class="flow" style="margin-top:8px">
+          <div class="flow-step">
+            <div class="flow-dot o">📧</div>
+            <div class="flow-text">
+              <div class="flow-title">You get a notification</div>
+              <div class="flow-sub">"⚡ Quarter-finals are open — make your picks!"</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-dot b">✏️</div>
+            <div class="flow-text">
+              <div class="flow-title">Open the app → Knockout tab</div>
+              <div class="flow-sub">Team names fill in automatically</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-dot p">🔒</div>
+            <div class="flow-text">
+              <div class="flow-title">Predict, Save and Lock each match</div>
+              <div class="flow-sub">Same 3-step process as group stage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINTS SYSTEM -->
+  <div class="section-intro">
+    <div class="overline">Points system</div>
+    <h2>How you <span>earn points</span></h2>
+  </div>
+
+  <div class="pts-table">
+    <div class="pts-table-hdr">Points breakdown</div>
+    <div class="pts-row win">
+      <div class="desc">✅ Correct prediction (any round)</div>
+      <div class="pts">+3</div>
+    </div>
+    <div class="pts-row zero">
+      <div class="desc">❌ Wrong prediction</div>
+      <div class="pts">0</div>
+    </div>
+    <div class="pts-row zero">
+      <div class="desc">— No prediction made</div>
+      <div class="pts">0</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <span class="tip-icon">🏆</span>
+    <span>There are <strong>104 matches</strong> in total — that's a maximum of <strong>312 points</strong> up for grabs. Every prediction counts!</span>
+  </div>
+
+  <!-- TOURNAMENT DATES -->
+  <div class="section-intro">
+    <div class="overline">Key dates</div>
+    <h2>Tournament <span>schedule</span></h2>
+  </div>
+
+  <div class="tourney-table">
+    <div class="tourney-row highlight">
+      <span class="tourney-icon">📋</span>
+      <span class="tourney-name">Group Stage (72 matches)</span>
+      <span class="tourney-dates">11–27 Jun</span>
+    </div>
+    <div class="tourney-row">
+      <span class="tourney-icon">⚔️</span>
+      <span class="tourney-name">Round of 32</span>
+      <span class="tourney-dates">28 Jun–3 Jul</span>
+    </div>
+    <div class="tourney-row">
+      <span class="tourney-icon">⚡</span>
+      <span class="tourney-name">Round of 16</span>
+      <span class="tourney-dates">4–7 Jul</span>
+    </div>
+    <div class="tourney-row">
+      <span class="tourney-icon">🔥</span>
+      <span class="tourney-name">Quarter-finals</span>
+      <span class="tourney-dates">9–11 Jul</span>
+    </div>
+    <div class="tourney-row">
+      <span class="tourney-icon">🌟</span>
+      <span class="tourney-name">Semi-finals</span>
+      <span class="tourney-dates">14–15 Jul</span>
+    </div>
+    <div class="tourney-row">
+      <span class="tourney-icon">🥉</span>
+      <span class="tourney-name">3rd place play-off</span>
+      <span class="tourney-dates">18 Jul</span>
+    </div>
+    <div class="tourney-row highlight">
+      <span class="tourney-icon">🏆</span>
+      <span class="tourney-name"><strong>THE FINAL</strong></span>
+      <span class="tourney-dates"><strong>19 Jul</strong></span>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section-intro">
+    <div class="overline">Common questions</div>
+    <h2>FAQs</h2>
+  </div>
+
+  <div class="faq">
+    <div class="faq-item">
+      <div class="faq-q">Can I change my prediction after saving?</div>
+      <div class="faq-a">Yes — you can change it as many times as you like after saving, right up until you tap 🔒 Lock. Once locked, it cannot be changed.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I forget to lock before kick-off?</div>
+      <div class="faq-a">Once the admin closes a round, predictions are frozen. If you haven't locked in time, your saved prediction still counts — but it's best to lock as soon as you're sure.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need to create an account?</div>
+      <div class="faq-a">No! Just open the file, tap Player, and type your name. That's it — no passwords, no accounts needed.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will my predictions be saved if I close the app?</div>
+      <div class="faq-a">Yes — as long as you tapped Save (and ideally Lock), your predictions are stored in the cloud. Open the app again on any device and they'll be there.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I know when a new round opens?</div>
+      <div class="faq-a">If you added your email or WhatsApp number when signing up, you'll get a notification. You'll also see a pop-up the next time you open the app.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Where can I see the leaderboard?</div>
+      <div class="faq-a">The admin shares leaderboard updates via WhatsApp or email after each round. You can also see your own score in the 🏆 My Tally tab anytime.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <span class="tip-icon">🚀</span>
+    <span>The tournament starts <strong>11 June 2026</strong> — get your group stage predictions in early so you don't miss any matches!</span>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>Good luck! ⚽🏆</strong>
+  May the best predictor win — Appiah Family & Bannatyne Batch World Cup 2026
+</div>
+
+</body>
+</html>
